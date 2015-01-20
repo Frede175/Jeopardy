@@ -145,7 +145,7 @@ function table() {
 
 				var btn = document.createElement('button');
 				var node1 = document.createTextNode(j*100); 
-				btn.setAttribute("type", "button"); btn.setAttribute("class", "btnQ"); btn.setAttribute("id", "btn_"+i+"_"+j);
+				btn.setAttribute("type", "button"); btn.setAttribute("class", "btnQ btnQ_enable"); btn.setAttribute("id", "btn_"+i+"_"+j);
 
 				btn.appendChild(node1);
 
@@ -419,16 +419,15 @@ function loadState(fileData){
 		for(var j =0; j < Height; j++){
 			var fileData_split_split = fileData_split[readNumber].split(":");
 			console.log(fileData_split_split[0] + ", " + fileData_split_split[1]);
+			var id = i + '_' + j;
 			if(fileData_split_split[1] == "true"){
-				fileData_split_split[1] = true;
+				document.getElementById(fileData_split_split[0]).disabled = true;
+				$('#' + fileData_split_split[0]).removeClass('btnQ_enable');
 			}
 			else
 			{
-				fileData_split_split[1] = false;
+				document.getElementById(fileData_split_split[0]).disabled = false;
 			}
-			var id = i + '_' + j;
-			console.log(fileData_split_split[1]);
-			document.getElementById(fileData_split_split[0]).disabled = fileData_split_split[1];
 			readNumber++;
 		}
 	}
