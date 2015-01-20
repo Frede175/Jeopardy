@@ -6,6 +6,7 @@
 	var Height = 0;
 	var btn_id_save = []; // Test only
 	var questions_array = new Array(Width);
+	var Questions_moveon = 0;
 
 $(document).ready(function() {
 	var point = 0;
@@ -239,11 +240,15 @@ function changeTeam(){
 function showAnswer(){
 	document.getElementById('Answer').setAttribute("style", "display:");
 	document.getElementById('continue').setAttribute("style", "display:");
+	document.getElementById('btn_right').disabled = true;
+	document.getElementById('btn_wrong').disabled = true;
 }
 
 function hideAnswer(){
 	document.getElementById('Answer').setAttribute("style", "display:none");
 	document.getElementById('continue').setAttribute("style", "display:none");
+	document.getElementById('btn_right').disabled = false;
+	document.getElementById('btn_wrong').disabled = false;
 }
 
 function setHeight(winH, y) {
@@ -282,18 +287,7 @@ function display_questions(btn_id){
 	document.getElementById('Answer').innerHTML = questions_array_split[1];
 
 	//Loading timer
-	var countdown_timer = countdown;
-
-	var timer_countdown = document.getElementById('timer_countdown');
-
-	timer_countdown.innerHTML = countdown_timer;
-
-	Timer = setInterval(function () {
-		countdown_timer--;
-
-		timer_countdown.innerHTML = countdown_timer;
-
-	}, 1000);
+	QuestionsTimer();
 
 	//Displaying Questions table
 	document.getElementById('main_table').setAttribute("style", "display:none");
@@ -303,13 +297,50 @@ function display_questions(btn_id){
 function display_maintable(){
 	document.getElementById('main_table').setAttribute("style", "display:");
 	document.getElementById('Questions').setAttribute("style", "display:none");
+	var timer_countdown = document.getElementById('timer_countdown');
+	timer_countdown.innerHTML = countdown;
+	Questions_moveon = 0;
+}
+
+function QuestionsTimer(){
+	var countdown_timer = countdown;
+
+	if (Questions_moveon > 0){
+		console.log("TRUE");
+		countdown_timer = countdown_timer/2;
+	}
+
+	var timer_countdown = document.getElementById('timer_countdown');
+
+	timer_countdown.innerHTML = countdown_timer;
+
+	Timer = setInterval(function () {
+		if(countdown_timer <= 0){
+			ClearTimer();
+			if(Questions_moveon < 1){
+				alert("The time ran out. Moving on to the next team");
+				changeTeam();
+				Questions_moveon++;
+				QuestionsTimer();
+			}else{
+				alert("The time ran out. Going to show the answer to the question now!");
+				showAnswer();
+			}
+		}
+		else
+		{
+		countdown_timer--;
+
+		timer_countdown.innerHTML = countdown_timer;
+		}
+	}, 1000);
+
 }
 
 
 function ClearTimer(){
 	clearInterval(Timer);
 	var timer_countdown = document.getElementById('timer_countdown');
-	timer_countdown.innerHTML = 60;
 }
 
 // This needs to somehow save to a file or database ------------------------ !!!!!!
