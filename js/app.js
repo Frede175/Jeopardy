@@ -18,6 +18,7 @@ function clickbtn() {
 	$('.btnQ').unbind().click(function() {
 
 		$(this).attr("disabled", "disabled");
+		$(this).removeClass('btnQ_enable');
 		// $(this).text('');
 		
 		display_questions(this.id);
