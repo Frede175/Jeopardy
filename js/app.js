@@ -30,7 +30,6 @@ function clickbtn() {
 	});
 
 	$('#btn_right').unbind().click(function(event) {
-		console.log("btn_right");
 		TEAMPOINT[activeTeam] += point;
 
 		var teamid = 'TEAMSPOINT_' + (activeTeam+1); //Teamspoint text field id for points
@@ -45,7 +44,12 @@ function clickbtn() {
 	});
 
 	$('#btn_wrong').unbind().click(function(event) {
-		console.log("btn_wrong");
+		TEAMPOINT[activeTeam] -= point;
+
+		var teamid = 'TEAMSPOINT_' + (activeTeam+1); //Teamspoint text field id for points
+
+		document.getElementById(teamid).innerHTML = TEAMPOINT[activeTeam];
+		
 		changeTeam();
 		//display_maintable();
 		showAnswer();

@@ -6,6 +6,7 @@
 
 		<link rel="stylesheet" href="css/main.css"/>
 		<link href="css/bootstrap.min.css" rel="stylesheet"/>
+		<LINK REL="SHORTCUT ICON" HREF="images/logo.png">
 	</head>
 
 	<body>

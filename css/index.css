@@ -1,0 +1,46 @@
+#header {
+	width: 100%;
+	background-color: #f0f0f0;
+	position: fixed;
+	top: 0px;
+}
+
+#nav {
+	height: 60px;
+	width: 960px;
+	margin: 0px auto;
+
+}
+
+#nav ul {
+    margin: 0;
+    list-style-type: none;
+}
+#nav a {
+    color: #000000;
+    text-decoration: none;
+    font-size: 20px;
+}
+#nav a:hover {
+    color: #1dbaf8;
+}
+#nav ul li {
+    float: left;
+    line-height: 60px;
+    margin-right: 20px;
+}
+
+#content {
+	width: 960px;
+	height: 2000px;
+	background-color: #f0f0f0;
+	margin: 80px auto;
+	border: 2px #A6A6A6 solid;
+}
+
+#logo {
+	height: 60px;
+	float: right;
+	text-align: right;
+	margin-right: 30px;
+}
