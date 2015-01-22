@@ -10,6 +10,8 @@
 	</head>
 
 	<body>
+
+		<button id="menu">Menu</button>
 		<div id="TEAMS_points">
 			<table>
 				<tbody>
@@ -50,6 +52,8 @@
 			<button id="continue" class="Qbtn" style="display:none">Continue</button>
 
 		</div>
+
+
 
 
 		<!--Script -->

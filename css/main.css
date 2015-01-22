@@ -1,7 +1,17 @@
+
 body {
 	background-image: url(../images/wallpaper.jpg);
-	background-size: 100%;
-	background-repeat: none;
+	background-repeat: repeat;
+	z-index: 1;
+}
+
+#menu {
+	z-index: 2;
+	position: fixed;
+	float: right;
+	right:0px;
+	top: 20px;
+
 }
 
 .current {
