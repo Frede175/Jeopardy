@@ -73,7 +73,7 @@
 
 		<!-- Footer ........................ --> 
 		<div id="background-madeby">
-			<p>Background is by <a href="http://www.squidfingers.com/patterns">Squidfingers</a></p>
+			<p>Background is by <a href="http://www.squidfingers.com/patterns" target="_blank">Squidfingers</a></p>
 		</div>
 
 		<!--Script -->
