@@ -30,11 +30,7 @@ function clickbtn() {
 	});
 
 	$('#btn_right').unbind().click(function(event) {
-		TEAMPOINT[activeTeam] += point;
-
-		var teamid = 'TEAMSPOINT_' + (activeTeam+1); //Teamspoint text field id for points
-
-		document.getElementById(teamid).innerHTML = TEAMPOINT[activeTeam];
+		points();
 
 		point = null;
 
@@ -44,13 +40,10 @@ function clickbtn() {
 	});
 
 	$('#btn_wrong').unbind().click(function(event) {
-		TEAMPOINT[activeTeam] -= point;
-
-		var teamid = 'TEAMSPOINT_' + (activeTeam+1); //Teamspoint text field id for points
-
-		document.getElementById(teamid).innerHTML = TEAMPOINT[activeTeam];
-		
+		if(Questions_moveon == 0){
+		points("wrong");
 		changeTeam();
+		}
 		//display_maintable();
 		showAnswer();
 		ClearTimer();
@@ -61,13 +54,16 @@ function clickbtn() {
 		display_maintable();
 	});
 
-	$('#saveState').unbind().click(function(event) {
+	$('#save-game').unbind().click(function(event) {
+		$("#div-menu").hide("slow");
 		save();
 	});
-	$('#newGame').unbind().click(function(event) {
+	$('#new-game').unbind().click(function(event) {
+		$("#div-menu").hide("slow");
 		//this.remove();
 		$('#TEAMS_tr').text('');
 		$('#main_table').text('');
+		activeTeam = 0;
 		teamnumber = 4;
 		countdown = 60;
 		Width = 4; //Width
@@ -76,6 +72,10 @@ function clickbtn() {
 		clickbtn();
 
 	}); 
+
+	$('#menu').unbind().click(function(event) {
+		$("#div-menu").toggle("slow");
+	});
 
 	window.onload = function() {
     var fileInput = document.getElementById('loadState');;
@@ -322,6 +322,7 @@ function QuestionsTimer(){
 		if(countdown_timer <= 0){
 			ClearTimer();
 			if(Questions_moveon < 1){
+				points("wrong");
 				alert("The time ran out. Moving on to the next team");
 				changeTeam();
 				Questions_moveon++;
@@ -345,6 +346,22 @@ function QuestionsTimer(){
 function ClearTimer(){
 	clearInterval(Timer);
 	var timer_countdown = document.getElementById('timer_countdown');
+}
+
+function points(state) {
+	if(state == "wrong"){
+			TEAMPOINT[activeTeam] -= point;
+		}else{
+			if(Questions_moveon == 1){
+				TEAMPOINT[activeTeam] += point/2;
+			}else{
+				TEAMPOINT[activeTeam] += point;
+			}
+		}
+
+		var teamid = 'TEAMSPOINT_' + (activeTeam+1); //Teamspoint text field id for points
+		document.getElementById(teamid).innerHTML = TEAMPOINT[activeTeam];
+	
 }
 
 // This needs to somehow save to a file or database ------------------------ !!!!!!

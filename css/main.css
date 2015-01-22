@@ -1,17 +1,50 @@
 
 body {
-	background-image: url(../images/wallpaper.jpg);
+	background-image: url(../images/pattern_152.gif);
 	background-repeat: repeat;
 	z-index: 1;
 }
 
 #menu {
-	z-index: 2;
+	z-index:3;
+	background-color: #ffffff;
 	position: fixed;
 	float: right;
-	right:0px;
-	top: 20px;
+	right: 0px;
+	height: 30px;
+	width: 70px;
 
+}
+
+#div-menu {
+	z-index: 2;
+	background-color: #f0f0f0;
+	position: fixed;
+	float: right;
+	width: 175px;
+	height: 250px;
+	right: 0px;
+	top: 30px;
+	border: 2px solid #a0a0a0;
+}
+
+#div-menu ul {
+	margin: 0;
+    list-style-type: none;
+}
+
+#div-menu a {
+    color: #000000;
+    text-decoration: none;
+    font-size: 20px;
+    line-height: 35px;
+}
+#div-menu a:hover {
+    color: #1dbaf8;
+}
+
+#ul-border {
+	border-top: 2px solid #909090;
 }
 
 .current {
@@ -79,9 +112,22 @@ body {
 
 .btnQ_enable:hover {
 	background-color: #252525;
+	color: #ffffff;
 }
 
 .Timer {
 	font-size: 30px;
 	color: blue;
+}
+
+#background-madeby {
+	bottom: 0px;
+	right: 10px;
+	position: fixed;
+	color: #ffffff;
+	font-size: 10px;
+}
+
+#background-madeby a {
+	color: #33CCFF;
 }

@@ -10,8 +10,25 @@
 	</head>
 
 	<body>
+		<div>
+			<input type="submit" name="submit" value="Menu" id="menu" />
 
-		<button id="menu">Menu</button>
+			<div id="div-menu">
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="make.html">Make</a></li>
+					<li><a href="Jeopardy.php">Play</a></li>
+					<li><a href="About.php">About</a></li>
+				</ul>
+				<ul id="ul-border">	
+					<li><a href="#" id="new-game">New game</a></li>
+					<li><a href="#" id="save-game">Save game</a></li>
+					<li><a href="#">Load game</a></li>
+				</ul>
+
+			</div>
+		</div>
+
 		<div id="TEAMS_points">
 			<table>
 				<tbody>
@@ -29,13 +46,13 @@
 				</tbody>
 
 			</table>
-
+<!--
 			<button id="newGame">New Game</button>
 			<button id="saveState">Save</button>
 			<br>
 			Load saved game:
 			<input type="file" id="loadState">
-
+-->
 		</div>
 
 		<div id="Questions" style="display:none" class="center">
@@ -54,7 +71,10 @@
 		</div>
 
 
-
+		<!-- Footer ........................ --> 
+		<div id="background-madeby">
+			<p>Background is by <a href="http://www.squidfingers.com/patterns">Squidfingers</a></p>
+		</div>
 
 		<!--Script -->
 
