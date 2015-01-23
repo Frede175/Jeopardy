@@ -10,8 +10,18 @@
 	</head>
 
 	<body>
+
+		<div id="popup">
+			<img src="images/close.png" id="close">
+
+		</div>
+
+		<div id="dimmer">
+
+		</div>
+			
 		<div>
-			<input type="submit" name="submit" value="Menu" id="menu" />
+			<img src="images/menu.png" id="menu">
 
 			<div id="div-menu">
 				<ul>
@@ -23,7 +33,7 @@
 				<ul id="ul-border">	
 					<li><a href="#" id="new-game">New game</a></li>
 					<li><a href="#" id="save-game">Save game</a></li>
-					<li><a href="#">Load game</a></li>
+					<li><a href="#" id="load-game">Load game</a></li>
 				</ul>
 
 			</div>

@@ -73,6 +73,14 @@ function clickbtn() {
 
 	}); 
 
+	$('#load-game').unbind().click(function(event) {
+		$('#popup').show();
+	});
+
+	$('#close').unbind().click(function(event) {
+		$('#popup').hide();
+	});
+
 	$('#menu').unbind().click(function(event) {
 		$("#div-menu").toggle("slow");
 	});
@@ -101,7 +109,7 @@ function clickbtn() {
 		}
     });
 
-	}
+	} 
 
 
 }
