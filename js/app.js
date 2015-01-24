@@ -80,6 +80,7 @@ function clickbtn() {
 		teamnumber = parseInt($('#teams-number').val());
 		Width = parseInt($('#subjects-number').val()); //Width
 		Height = parseInt($('#questions-number').val()); //Height
+		closePopup();
 
 		console.log(teamnumber + " " + Width + " " + Height); 
 
@@ -103,6 +104,7 @@ function clickbtn() {
     var fileInput = document.getElementById('loadState');;
 
     fileInput.addEventListener('change', function(e) {
+    	closePopup();
       	var file = fileInput.files[0];
 		var textType = /text.*/;
 
