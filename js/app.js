@@ -300,7 +300,7 @@ function closePopup() {
 }
 
 function generate_lists() {
-	for(var i = 2; i <15; i++){
+	for(var i = 2; i <11; i++){
 		var $lists = $('.select_lists-' + i);
 
 		for(var x = 2; x <= i; x++){
