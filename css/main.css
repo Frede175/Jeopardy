@@ -63,6 +63,15 @@ body {
 	border: 2px solid #909090;
 }
 
+#popup h1, p, input {
+	text-align: center;
+}
+
+#new-game-popup, #load-game-popup {
+	margin-top:50px;
+	display: none;
+}
+
 #close {
 	position: relative;
 	height: 30px;

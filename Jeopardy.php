@@ -14,11 +14,22 @@
 		<div id="popup">
 			<img src="images/close.png" id="close">
 
+			<div id="load-game-popup">
+				<h1>Load Save file</h1>
+				<input type="file" name="FileChoser" id="loadState"/>
+			</div>
+
+			<div id="new-game-popup">
+				<h1>New game</h1>
+					<p>This generates a jeopardy with generated questions and answers</p>
+					<P>The number of teams:  <select id="teams-number" class="select_lists-8"></select></P>
+					<p>The number of subjects:  <select id="subjects-number" class="select_lists-8"></select></p>
+					<p>The number of questions:  <select id="questions-number" class="select_lists-10"></select></p>
+					<input type="button" value="Click for new game" id="submit-newgame"/>
+			</div>
 		</div>
 
-		<div id="dimmer">
-
-		</div>
+		<div id="dimmer"></div>
 			
 		<div>
 			<img src="images/menu.png" id="menu">

@@ -9,8 +9,10 @@
 	var Questions_moveon = 0;
 
 $(document).ready(function() {
+	generate_lists();
 	var point = 0;
 	clickbtn();
+
 });
 
 function clickbtn() {
@@ -60,25 +62,37 @@ function clickbtn() {
 	});
 	$('#new-game').unbind().click(function(event) {
 		$("#div-menu").hide("slow");
-		//this.remove();
 		$('#TEAMS_tr').text('');
 		$('#main_table').text('');
-		activeTeam = 0;
+	/*	activeTeam = 0;
 		teamnumber = 4;
 		countdown = 60;
 		Width = 4; //Width
-		Height = 5; //Height
-		makeScorer(); table(); Questions(); //Generate the table
-		clickbtn();
+		Height = 5; //Height 
+	*/
+		showPopup(1);
 
 	}); 
 
+	$('#submit-newgame').unbind().click(function(event) {
+		activeTeam = 0;
+		countdown = 60; //måske
+		teamnumber = parseInt($('#teams-number').val());
+		Width = parseInt($('#subjects-number').val()); //Width
+		Height = parseInt($('#questions-number').val()); //Height
+
+		console.log(teamnumber + " " + Width + " " + Height); 
+
+		makeScorer(); table(); Questions(); //Generate the table
+		clickbtn();
+	});
+
 	$('#load-game').unbind().click(function(event) {
-		$('#popup').show();
+		showPopup(2);
 	});
 
 	$('#close').unbind().click(function(event) {
-		$('#popup').hide();
+		closePopup();
 	});
 
 	$('#menu').unbind().click(function(event) {
@@ -108,9 +122,7 @@ function clickbtn() {
 			alert("Could not read the file...");
 		}
     });
-
 	} 
-
 
 }
 
@@ -261,6 +273,40 @@ function hideAnswer(){
 	document.getElementById('continue').setAttribute("style", "display:none");
 	document.getElementById('btn_right').disabled = false;
 	document.getElementById('btn_wrong').disabled = false;
+}
+
+function showPopup(which) {
+	$('#popup').show();
+	$('#dimmer').show();
+	$('#dimmer').unbind().click(function(event){
+		closePopup();
+	});
+
+	if (which == 1){
+		//New game
+		$('#new-game-popup').show();
+	}
+	if (which == 2){
+		//load game
+		$('#load-game-popup').show();
+	}
+}
+
+function closePopup() {
+	$('#popup').hide();
+	$('#dimmer').hide();
+	$('#new-game-popup').hide();
+	$('#load-game-popup').hide();
+}
+
+function generate_lists() {
+	for(var i = 2; i <15; i++){
+		var $lists = $('.select_lists-' + i);
+
+		for(var x = 2; x <= i; x++){
+			$('.select_lists-' + i).append("<option value='" + x + "'>" + x + "</option>");
+		}
+	}
 }
 
 function setHeight(winH, y) {
