@@ -164,23 +164,26 @@ body {
 
 .table_box {
 	width: 2%;
-	/*height: 125px;*/
 	text-align: center;
 }
 
 .table_box_subject {
-
-	/*height: 125px;*/
 	text-align: center;
 	font-weight: bold;
-	font-size: 40px;
+	font-size: 35px;
 }
 
 .TEAMS{
 
-	font-size: 40px;
+	font-size: 35px;
 
 	display: inline;
+}
+
+#title {
+	font-size: 35px;
+	text-align: center;
+	margin: 0 auto;
 }
 
 #TEAMS_tr {
@@ -204,10 +207,11 @@ body {
 
 .center {
 	margin-left: auto;
-    margin-right: auto;
-    width: 70%;
-    text-align: center; 
+	margin-right: auto;
+	width: 70%;
+	text-align: center; 
 }
+
 
 .Qbtn {
 
@@ -241,4 +245,24 @@ body {
 
 #background-madeby a {
 	color: #33CCFF;
+}
+
+/* Make page add-remove! */
+#add-remove-subject {
+	right: 10px;
+	height: 240px;
+	vertical-align: middle;
+	display: inline-block;
+	position: absolute;
+}
+
+#add-remove-subject img {
+	margin: 10px 0px 10px 0px;
+	display: block;
+	height: 100px;
+	width: 100px;
+}
+
+#add-remove-question img {
+	margin: 0px 10px 0px 10px;
 }

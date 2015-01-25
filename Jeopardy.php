@@ -68,6 +68,7 @@
 			</div>
 		</div>
 
+		<p id="title" style="display: none">Title</p>
 		<div id="TEAMS_points">
 			<table>
 				<tbody>

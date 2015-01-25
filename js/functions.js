@@ -44,9 +44,12 @@ function save(){
 		});
 
 	//Make file with data:
-	var saveData = "SaveFile. DO NOT CHANGE ANYTING IN THIS FILE;"
+	var saveData;
 	var separator = ";"
 
+	//title
+	saveData = $('#title').text() + separator;
+	
 	//Adds how many teams there is
 	saveData += teamnumber + separator
 	+ Width + separator
@@ -111,7 +114,8 @@ function loadState(fileData){
 	$('#newGame').remove();
 
 	var readNumber = 6;
-
+	
+	$('#title').text(fileData_split[0]);
 	teamnumber = parseInt(fileData_split[1]);
 	Width = parseInt(fileData_split[2]);
 	Height = parseInt(fileData_split[3]);

@@ -20,11 +20,6 @@
 				<div id="select-newgame">
 					<table>
 						<tr>
-							<td><P>The number of teams:  </P></td>
-							<td class="select-style"><select id="teams-number" class="select_lists-8"></select></td>
-						</tr>
-							
-						<tr>
 							<td><p>The number of subjects:  </p></td>
 							<td class="select-style"><select id="subjects-number" class="select_lists-8"></select></td>
 						</tr>
@@ -39,7 +34,7 @@
 				</div>
 				<button id="submit-makenewgame" class="center">Start makeing a new game!</button>
 				
-				<h4 class="center">You can change the number of subjects and questions later!</h4>
+				<h4 class="center">You can change the number of teams, subjects and questions later!</h4>
 			</div>
 		</div>
 
@@ -61,8 +56,35 @@
 
 			</div>
 		</div>
-
 		
+		
+		<!-- Table to append to with javascript! -->
+		<div id="make-table">
+			<div id="make-subjects">
+				
+				
+			</div>
+			
+			<div id="make-maintable">
+				
+				
+			</div>
+			
+		</div>
+		
+		<div id="add-remove-subject">
+			<img src="images/add.png" id="add-subject" />
+			<img src="images/remove.png" id="remove-subject" />
+		</div>
+		
+		<div id="add-remove-question">
+			<img src="images/add.png" id="add-question" />
+			<img src="images/remove.png" id="remove-question" />
+		</div>
+
+		<div id="background-madeby">
+			<p>Background is by <a href="http://www.squidfingers.com/patterns" target="_blank">Squidfingers</a></p>
+		</div>
 
 
 		<!--Script -->

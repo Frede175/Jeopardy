@@ -125,6 +125,8 @@ function makeScorer() {
 
 	//Points for the teams...
 	var Points = 0;
+	
+	$('#title').attr("style", "");
 
 	for(var i = 1; i <= teamnumber; i++){
 
