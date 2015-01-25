@@ -5,6 +5,8 @@ body {
 	z-index: 1;
 }
 
+/*menu nav */
+
 #menu {
 	z-index:3;
 	position: fixed;
@@ -23,7 +25,6 @@ body {
 	position: fixed;
 	float: right;
 	width: 175px;
-	height: 250px;
 	right: 0px;
 	top: 30px;
 	border: 2px solid #a0a0a0;
@@ -48,9 +49,13 @@ body {
 	border-top: 2px solid #909090;
 }
 
+/* end menu nav */
+
+/* Popup menu: */
+ 
 #popup {
-	height: 300px;
-	width: 400px;
+	height: 600px;
+	width: 800px;
 	background-color: #ffffff;
 	z-index: 100;
 	display: none;
@@ -61,13 +66,72 @@ body {
 	right: 0;
 	margin: auto;
 	border: 2px solid #909090;
+	border-radius: 10px;
+	box-shadow: 0px 0px 30px 0px rgba(50, 50, 50, 1); 
 }
 
-#popup h1, p, input {
+#popup h1, .center {
 	text-align: center;
 }
 
-#new-game-popup, #load-game-popup {
+#select-newgame {
+	width: 300px;
+	margin: 0 auto;
+}
+
+#popup table {
+	font-size: 18px; 
+}
+
+.select-style {
+	text-align: right;
+	width: 65px;
+	padding-left: 20px;
+	padding-right: 5px; 
+	overflow: hidden; 
+	background-color: #fff;
+	background: #fff url("../images/arrowdown.png") no-repeat 86% 50%;
+}
+
+.select-style select {
+	padding-right: 20px;
+	float: right;
+	width: 130%;
+	border: 1px solid #8c8c8c;
+	border-radius: 3px;
+	background-color: transparent;
+	background-image: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+            appearance: none;
+}
+
+.select-style select:focus {
+	outline: none;
+}
+
+#select-newgame p {
+	margin: 10px 0px 10px 0px;
+}
+
+
+#submit-newgame {
+	height: 40px;
+	font-size: 20px;
+	width: 200px;
+	margin: 0 auto;
+	display: block;
+}
+
+#submit-makenewgame {
+	height: 40px;
+	font-size: 20px;
+	width: 300px;
+	margin: 0 auto;
+	display: block;
+}
+
+#new-game-popup, #load-game-popup, #make-game-popup {
 	margin-top:50px;
 	display: none;
 }
@@ -91,6 +155,8 @@ body {
 	z-index: 99;
 	display: none;
 }
+
+/* end popup */
 
 .current {
 	background-color: green;

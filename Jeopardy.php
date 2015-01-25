@@ -17,16 +17,33 @@
 
 			<div id="load-game-popup">
 				<h1>Load Save file</h1>
-				<input type="file" name="FileChoser" id="loadState"/>
+				<input class="center" type="file" name="FileChoser" id="loadState"/>
 			</div>
 
 			<div id="new-game-popup">
 				<h1>New game</h1>
-					<p>This generates a jeopardy with generated questions and answers</p>
-					<P>The number of teams:  <select id="teams-number" class="select_lists-8"></select></P>
-					<p>The number of subjects:  <select id="subjects-number" class="select_lists-8"></select></p>
-					<p>The number of questions:  <select id="questions-number" class="select_lists-10"></select></p>
-					<input type="button" value="Click for new game" id="submit-newgame"/>
+					<h3 class="center">This generates a jeopardy with generated questions and answers</h3>
+				<div id="select-newgame">
+					<table>
+						<tr>
+							<td><P>The number of teams:  </P></td>
+							<td class="select-style"><select id="teams-number" class="select_lists-8"></select></td>
+						</tr>
+							
+						<tr>
+							<td><p>The number of subjects:  </p></td>
+							<td class="select-style"><select id="subjects-number" class="select_lists-8"></select></td>
+						</tr>
+						
+						<tr>
+							<td><p>The number of questions:  </p></td>
+							<td class="select-style"><select id="questions-number" class="select_lists-10"></select></td>
+						</tr>
+						
+						
+					</table>
+					<button id="submit-newgame" class="center">Make new game!</button>
+				</div>
 			</div>
 		</div>
 
@@ -38,11 +55,11 @@
 			<div id="div-menu">
 				<ul>
 					<li><a href="index.html">Home</a></li>
-					<li><a href="make.html">Make</a></li>
+					<li><a href="make.php">Make</a></li>
 					<li><a href="Jeopardy.php">Play</a></li>
 					<li><a href="About.php">About</a></li>
 				</ul>
-				<ul id="ul-border">	
+				<ul id="ul-border"> 
 					<li><a href="#" id="new-game">New game</a></li>
 					<li><a href="#" id="save-game">Save game</a></li>
 					<li><a href="#" id="load-game">Load game</a></li>
@@ -93,7 +110,7 @@
 		</div>
 
 
-		<!-- Footer ........................ --> 
+		<!-- Footer --> 
 		<div id="background-madeby">
 			<p>Background is by <a href="http://www.squidfingers.com/patterns" target="_blank">Squidfingers</a></p>
 		</div>
@@ -103,6 +120,7 @@
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 		<script type="text/javascript" src="js/bootstrap.js"></script>
 		<script type="text/javascript" src="js/FileSaver.js"></script>
+		<script type="text/javascript" src="js/functions.js"></script>
 		<script type="text/javascript" src="js/app.js"></script>
-	</body>	
+	</body> 
 </html>

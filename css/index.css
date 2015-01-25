@@ -44,11 +44,15 @@ src: local('Myriad Pro Regular'), url('../font/MYRIADPRO-REGULAR.woff') format('
     margin-right: 20px;
 }
 
-#logo {
-	height: 60px;
+.right {
 	float: right;
 	text-align: right;
-	margin-right: 30px;
+	line-height: 60px;
+	text-decoration: none;
+	font-size: 20px;
+	margin-right: 20px;
+	color: #000000;
+	height: 60px;
 }
 
 /* Content starts here */
