@@ -58,66 +58,10 @@ function clickbtn() {
 
 }
 
-function table() {
-
-	//HEADER --------------------------------------------------------------------------------------------------------------------
-
-	var w = window.innerWidth;
-	var h = window.innerHeight;
-
-
-	console.log("Height: "+ h, "Width: " + w);
-
-	var htable = setHeight(h, Height);
-	var wtable = setWidth(w, Width);
-
-	console.log(htable, wtable);
-
-	var trhead = document.createElement('tr');
-
-	for (var i = 1; i <= Width; i ++){
-		var td = document.createElement('td');
-		var node = document.createTextNode("Subject " + i);
-		td.appendChild(node); 
-		td.setAttribute("height", htable); td.setAttribute("width", wtable); td.setAttribute("class", "table_box_subject"); td.setAttribute("id", "subject_" + i)
-		trhead.appendChild(td);
-	}
-
-	document.getElementById('main_table').appendChild(trhead);
-
-
-
-
-	//MAIN TABLE -----------------------------------------------------------------------------------------------------------------
-
-	for (var j = 1; j <= Height; j++){
-
-
-		var tr = document.createElement('tr');
-
-
-		for (var i = 1; i <= Width; i++){
-
-			var tdata = document.createElement('td');
-			tdata.setAttribute("class", "table_box"); tdata.setAttribute("height", htable); tdata.setAttribute("width", wtable);
-
-				var btn = document.createElement('button');
-				var node1 = document.createTextNode(j*100); 
-				btn.setAttribute("type", "button"); btn.setAttribute("class", "btnQ btnQ_enable"); btn.setAttribute("id", "btn_"+i+"_"+j);
-
-				btn.appendChild(node1);
-
-			tdata.appendChild(btn);
-			tr.appendChild(tdata);
-
-		}
-
-		document.getElementById('main_table').appendChild(tr);
-	}
-
-}
-
 function makeScorer() {
+
+	TEAMPOINT.length = 0;
+	console.log(TEAMPOINT);
 
 	var w = window.innerWidth;
 
@@ -209,15 +153,7 @@ function hideAnswer(){
 	document.getElementById('btn_wrong').disabled = false;
 }
 
-function setHeight(winH, y) {
-	console.log("setHeight: " + y);
-	console.log("setHeight: " + (winH-150));
-	return (winH-150)/(y+1);
-}
 
-function setWidth(winW, x) {
-	return (winW-150)/x;
-}
 
 function calc_points(btn_id){
 	var btnsplit = btn_id.split("_");

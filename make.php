@@ -36,6 +36,22 @@
 				
 				<h4 class="center">You can change the number of teams, subjects and questions later!</h4>
 			</div>
+
+			<div id="edit-buttons-popup" > 
+				<div class="center">
+
+					<h1 id="button-text">Edit button for</h1>
+					<form>
+						<h3>Question:</h3>
+						<textarea type="text" id="input-question"></textarea>
+						<br>
+						<br>
+						<h3>Anwser:</h3>
+						<textarea type="text" id="input-answer" ></textarea>
+					</form>
+				</div>
+			</div>
+
 		</div>
 
 		<div id="dimmer"></div>
@@ -59,16 +75,13 @@
 		
 		
 		<!-- Table to append to with javascript! -->
-		<div id="make-table">
-			<div id="make-subjects">
-				
-				
-			</div>
-			
-			<div id="make-maintable">
-				
-				
-			</div>
+		<div id="make-table" width="500">
+			<table>
+				<tbody id="main_table">
+
+				</tbody>
+
+			</table>
 			
 		</div>
 		
