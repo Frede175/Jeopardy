@@ -236,6 +236,7 @@ body {
 }
 
 #background-madeby {
+	z-index: 98;
 	bottom: 0px;
 	right: 10px;
 	position: fixed;
@@ -248,21 +249,60 @@ body {
 }
 
 /* Make page add-remove! */
+#right-bar {
+	height: 100%;
+	right: 0px;
+	top: 0px;
+	width: 55px;
+	position: fixed;
+}
+
+
 #add-remove-subject {
-	right: 10px;
-	height: 240px;
-	vertical-align: middle;
-	display: inline-block;
+	height: 110px;
+	position: absolute;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+
+#add-remove-subject img {
+	margin: 5px 0px 5px 0px;
+	height: 50px;
+	width: 50px;
+	display: block;
+}
+
+#bottom-bar {
+	width: 100%;
+	height: 55px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	position: fixed;
+}
+
+#add-remove-question {
+	bottom: 0;
+	left: 0;
+	right: 0;
+	float: middle;
+	text-align: center;
 	position: absolute;
 }
 
-#add-remove-subject img {
-	margin: 10px 0px 10px 0px;
-	display: block;
-	height: 100px;
-	width: 100px;
+#add-remove-question img {
+	margin: 0px 5px 2px 5px;
+	height: 50px;
+	width: 50px;
 }
 
-#add-remove-question img {
-	margin: 0px 10px 0px 10px;
+#make-table {
+	width: 100%;
+	height: 100%;
+	background-color: #FFF;
+	z-index: 50;
 }

@@ -8,7 +8,7 @@
 		<LINK REL="SHORTCUT ICON" HREF="images/logo.png">
 
 	</head>
-
+	
 	<body>
 
 		<div id="popup">
@@ -72,21 +72,27 @@
 			
 		</div>
 		
-		<div id="add-remove-subject">
-			<img src="images/add.png" id="add-subject" />
-			<img src="images/remove.png" id="remove-subject" />
+
+		<div id="right-bar">
+			<div id="add-remove-subject">
+				<img src="images/add.png" id="add-subject" />
+				<img src="images/remove.png" id="remove-subject" />
+			</div>
 		</div>
+
+
 		
-		<div id="add-remove-question">
-			<img src="images/add.png" id="add-question" />
-			<img src="images/remove.png" id="remove-question" />
-		</div>
 
 		<div id="background-madeby">
 			<p>Background is by <a href="http://www.squidfingers.com/patterns" target="_blank">Squidfingers</a></p>
 		</div>
 
-
+		<div id="bottom-bar">
+			<div id="add-remove-question">
+				<img src="images/add.png" id="add-question" />
+				<img src="images/remove.png" id="remove-question" />
+			</div>
+		</div>
 		<!--Script -->
 
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
