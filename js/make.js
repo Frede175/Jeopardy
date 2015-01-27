@@ -26,22 +26,22 @@ function clickbtn() {
 		showPopup(4);
 	});
 
-	$('#add-subject').click(function(event) {
+	$('#add-subject').unbind().click(function(event) {
 		nSubjects++;
 		update();
 	});
 
-	$('#remove-subject').click(function(event) {
+	$('#remove-subject').unbind().click(function(event) {
 		nSubjects--;
 		update();
 	});
 
-	$('#add-question').click(function(event) {
+	$('#add-question').unbind().click(function(event) {
 		nQuestions++;
 		update();
 	});
 
-	$('#remove-question').click(function(event) {
+	$('#remove-question').unbind().click(function(event) {
 		nQuestions--;
 		update();
 	});
@@ -68,24 +68,10 @@ function generatetable() {
 }
 
 function update() {
-	var hTable = setHeight(browser_height+120, nQuestions);
-	var wTable = setWidth(browser_width, nSubjects);
+	$('#main_table').text('');
+	table(browser_width, browser_height+120, nQuestions, nSubjects);
 
-	$('.table_box').height(hTable);
-	$('.table_box').width(wTable);
-
-	$('.subject_table_box').height(hTable);
-	$('.subject_table_box').width(wTable);
-/*	for(var i = 1; i <= nSubjects; i++){
-		for (var x = 1; x <= nQuestions; x++){
-			$('#btn_' + i + "_" + x).height(hTable);
-			$('#btn_' + i + "_" + x).width(wTable);
-		}
-	} 
-
-	if(btn_id == "add-subject"){
-
-	} */
+	clickbtn();
 
 }
 
