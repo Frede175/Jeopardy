@@ -309,3 +309,8 @@ body {
 	height: 50px;
 	width: 50px;
 }
+
+#add-subject, #remove-subject, #add-question, #remove-question {
+	cursor: pointer;
+	
+}
