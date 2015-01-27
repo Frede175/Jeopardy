@@ -75,7 +75,7 @@
 		
 		
 		<!-- Table to append to with javascript! -->
-		<div id="make-table" width="500">
+		<div id="make-table">
 			<table>
 				<tbody id="main_table">
 
