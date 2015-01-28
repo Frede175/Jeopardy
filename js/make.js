@@ -2,6 +2,9 @@ var nQuestions = 0;
 var nSubjects = 0;
 var browser_width = 0;
 var browser_height = 0;
+var btn_state = [];
+var questions_array = new Array(nSubjects);
+var activeId;
 
 $(document).ready(function() {
 	generate_lists();
@@ -22,8 +25,10 @@ function clickbtn() {
 
 	$('.btnQ').unbind().click(function(event) {
 		//The question for that button!!!-------------------
-
+		activeId = this.id;
+		display_question();
 		showPopup(4);
+
 	});
 
 	$('#add-subject').unbind().click(function(event) {
@@ -46,16 +51,22 @@ function clickbtn() {
 		update();
 	});
 
+	$('#submit-updatebutton').unbind().click(function(event) {
+		update_questions_array_button();
+		closePopup();
+	});
+
 }
 
 function generatetable() {
-
 
 	browser_height = window.innerHeight-70;
 	browser_width = window.innerWidth-70;
 
 	nQuestions = parseInt($('#questions-number').val());
 	nSubjects = parseInt($('#subjects-number').val());
+
+	questions();
 
 	$('#make-table').height(browser_height);
 	$('#make-table').width(browser_width);
@@ -68,6 +79,13 @@ function generatetable() {
 }
 
 function update() {
+
+	btn_state.length = 0;
+
+	//forloop for buttons
+
+	//forloop end
+
 	$('#main_table').text('');
 	table(browser_width, browser_height+120, nQuestions, nSubjects);
 
@@ -75,4 +93,41 @@ function update() {
 
 }
 
+function questions() {
+	for(var i = 0; i < nSubjects; i++){
+		questions_array[i] = new Array(nQuestions);
+		for(var x = 0; x < nQuestions; x++){
+			questions_array[i][x] = ":What is";
+		}
+	}
+}
 
+function display_question() {
+	var idSplit = activeId.split("_");
+	var questions_array_split = questions_array[idSplit[1]-1][idSplit[2]-1].split(":");
+
+	$('#input-question').val(questions_array_split[0]);
+	$('#input-answer').val(questions_array_split[1]);
+}
+
+function update_questions_array(input) {
+	switch(input){
+		case 1:
+			break;s
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			break;
+	}
+}
+
+function update_questions_array_button() {
+	var idSplit = activeId.split("_");
+	questions_array[idSplit[1]-1][idSplit[2]-1] = $('#input-question').val() + ":" + $('#input-answer').val();
+}
+
+function update_btn_state() {
+	
+}

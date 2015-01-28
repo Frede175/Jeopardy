@@ -50,6 +50,7 @@
 						<textarea type="text" id="input-answer" ></textarea>
 					</form>
 				</div>
+				<button id="submit-updatebutton" class="center">Update</button>
 			</div>
 
 		</div>

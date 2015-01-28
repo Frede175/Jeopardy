@@ -123,12 +123,13 @@ body {
 	display: block;
 }
 
-#submit-makenewgame {
+#submit-makenewgame, #submit-updatebutton {
 	height: 40px;
 	font-size: 20px;
 	width: 300px;
 	margin: 0 auto;
 	display: block;
+	margin-top: 20px;
 }
 
 #new-game-popup, #load-game-popup, #make-game-popup, #edit-buttons-popup {
