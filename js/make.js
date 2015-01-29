@@ -2,7 +2,7 @@ var nQuestions = 0;
 var nSubjects = 0;
 var browser_width = 0;
 var browser_height = 0;
-var btn_state = [];
+var btn_state = new Array();
 var questions_array = new Array();
 var activeId;
 
@@ -26,6 +26,7 @@ function clickbtn() {
 	$('.btnQ').unbind().click(function(event) {
 		//The question for that button!!!-------------------
 		activeId = this.id;
+		console.log(activeId);
 		display_question();
 		$(this).addClass('btn_pressed');
 		showPopup(4);
@@ -33,27 +34,51 @@ function clickbtn() {
 	});
 
 	$('#add-subject').unbind().click(function(event) {
-		nSubjects++;
-		update_questions_array(1);
-		update();
+		if(nSubjects < 8){
+			update_btn_state();
+			nSubjects++;
+			update_questions_array(1);
+			update();
+			load_btn_state();
+		}else{
+			alert("You can't create more than 8 subjects!");
+		}
 	});
 
 	$('#remove-subject').unbind().click(function(event) {
-		nSubjects--;
-		update_questions_array(2);
-		update();
+		if(nSubjects > 2){
+			update_btn_state()
+			nSubjects--;
+			update_questions_array(2);
+			update();
+			load_btn_state();
+		}else{
+			alert("You can't have less than 2 subjects!");
+		}
 	});
 
 	$('#add-question').unbind().click(function(event) {
-		nQuestions++;
-		update_questions_array(3);
-		update();
+		if(nQuestions < 10){
+			update_btn_state();
+			nQuestions++;
+			update_questions_array(3);
+			update();
+			load_btn_state();
+		}else{
+			alert("You can't have more than 10 questions!");
+		}
 	});
 
 	$('#remove-question').unbind().click(function(event) {
-		nQuestions--;
-		update_questions_array(4);
-		update();
+		if(nQuestions > 2){
+			update_btn_state();
+			nQuestions--;
+			update_questions_array(4);
+			update();
+			load_btn_state();
+		}else{
+			alert("You can't have less than 2 questions!");
+		}
 	});
 
 	$('#submit-updatebutton').unbind().click(function(event) {
@@ -84,12 +109,6 @@ function generatetable() {
 }
 
 function update() {
-
-	btn_state.length = 0;
-
-	//forloop for buttons
-
-	//forloop end
 
 	$('#main_table').text('');
 	table(browser_width, browser_height+120, nQuestions, nSubjects);
@@ -146,5 +165,30 @@ function update_questions_array_button() {
 }
 
 function update_btn_state() {
-	
+	btn_state.length = 0;
+	btn_state = new Array(nSubjects);
+	for(var i = 0; i < nSubjects; i++){
+		btn_state[i] = new Array(nQuestions);
+		for(var x = 0; x < nQuestions; x++){
+			var id = (i+1) + "_" + (x+1);
+			btn_state[i][x] = $('#btn_' + id).hasClass('btn_pressed');
+		}
+	}
+
+	console.log(btn_state);
+}
+
+function load_btn_state() {
+	for(var i = 0; i < nSubjects; i++){
+		if(typeof btn_state[i] !== "null" && typeof btn_state[i] !== 'undefined' ){
+			for(var x = 0; x < nQuestions; x++){
+			var id = (i+1) + "_" + (x+1);
+				if(typeof btn_state[i][x] !== "null" && typeof btn_state[i][x] !== "undefined"){
+					if(btn_state[i][x] === true){
+						$('#btn_' + id).addClass('btn_pressed');
+					}
+				}
+			}
+		}
+	}
 }
