@@ -3,7 +3,7 @@ var nSubjects = 0;
 var browser_width = 0;
 var browser_height = 0;
 var btn_state = [];
-var questions_array = new Array(nSubjects);
+var questions_array = new Array();
 var activeId;
 
 $(document).ready(function() {
@@ -27,27 +27,32 @@ function clickbtn() {
 		//The question for that button!!!-------------------
 		activeId = this.id;
 		display_question();
+		$(this).addClass('btn_pressed');
 		showPopup(4);
 
 	});
 
 	$('#add-subject').unbind().click(function(event) {
 		nSubjects++;
+		update_questions_array(1);
 		update();
 	});
 
 	$('#remove-subject').unbind().click(function(event) {
 		nSubjects--;
+		update_questions_array(2);
 		update();
 	});
 
 	$('#add-question').unbind().click(function(event) {
 		nQuestions++;
+		update_questions_array(3);
 		update();
 	});
 
 	$('#remove-question').unbind().click(function(event) {
 		nQuestions--;
+		update_questions_array(4);
 		update();
 	});
 
@@ -113,12 +118,24 @@ function display_question() {
 function update_questions_array(input) {
 	switch(input){
 		case 1:
-			break;s
+			var number = questions_array.length;
+			questions_array[questions_array.length] = new Array(nQuestions);
+			for(var i = 0; i < nQuestions; i++){
+				questions_array[number][i] = ":What is";
+			}
+			break;
 		case 2:
+			questions_array.splice(questions_array.length-1, 1);
 			break;
 		case 3:
+			for(var i = 0; i < nSubjects; i++){
+				questions_array[i][questions_array[i].length] = ":What is";
+			}
 			break;
 		case 4:
+			for(var i = 0; i < nSubjects; i++){
+				questions_array[i].splice(questions_array[i].length-1, 1);
+			}
 			break;
 	}
 }

@@ -238,6 +238,10 @@ body {
 	color: #ffffff;
 }
 
+.btn_pressed {
+	background-color: #7cfc00;
+}
+
 .Timer {
 	font-size: 30px;
 	color: blue;
