@@ -41,7 +41,7 @@ function generate_lists() {
 	}
 }
 
-function save(){
+function save(save_state){
 
 	btn_id_save = [];
 
@@ -128,7 +128,7 @@ function loadState(fileData){
 	countdown = parseInt(fileData_split[4]);
 	activeTeam = parseInt(fileData_split[5])
 
-	makeScorer(); table(); Questions(); //Generate the table
+	makeScorer(); table(Width, Height, ); Questions(); //Generate the table
 
 	//Teams name and points
 	for(var i = 0; i < teamnumber; i++){
@@ -175,10 +175,7 @@ function loadState(fileData){
 }
 
 function clickmenu() {
-	$('#save-game').unbind().click(function(event) {
-		$("#div-menu").hide("slow");
-		save();
-	});
+	
 	$('#new-game').unbind().click(function(event) {
 		$("#div-menu").hide("slow");
 		$('#TEAMS_tr').text('');

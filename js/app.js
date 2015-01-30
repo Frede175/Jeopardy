@@ -56,6 +56,12 @@ function clickbtn() {
 		display_maintable();
 	});
 
+	//Menu save:
+	$('#save-game').unbind().click(function(event) {
+		$("#div-menu").hide("slow");
+		save(1);
+	});
+
 }
 
 function makeScorer() {

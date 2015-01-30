@@ -76,6 +76,7 @@
 		
 		
 		<!-- Table to append to with javascript! -->
+		<p id="title" style="display: none">Title</p>
 		<div id="make-table">
 			<table>
 				<tbody id="main_table">

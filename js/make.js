@@ -4,7 +4,8 @@ var browser_width = 0;
 var browser_height = 0;
 var btn_state = new Array();
 var questions_array = new Array();
-var activeId;
+var activeId_btn;
+var activeId_subject;
 
 $(document).ready(function() {
 	generate_lists();
@@ -18,6 +19,7 @@ function clickbtn() {
 	$('#submit-makenewgame').click(function(event) {
 		$('#add-remove-subject').attr('style', 'display: block');
 		$('#add-remove-question').attr('style', 'display: block');
+		$('#title').attr('style', 'display: block');
 		$("#div-menu").hide("slow");
 		closePopup();
 		generatetable();
@@ -25,12 +27,22 @@ function clickbtn() {
 
 	$('.btnQ').unbind().click(function(event) {
 		//The question for that button!!!-------------------
-		activeId = this.id;
-		console.log(activeId);
+		activeId_btn = this.id;
+		console.log(activeId_btn);
 		display_question();
 		$(this).addClass('btn_pressed');
 		showPopup(4);
 
+	});
+
+	$('.table_box_subject').unbind().dblclick(function(event) {
+		activeId_subject = this.id;
+		//do something :D
+
+	});
+
+	$('#title').unbind().dblclick(function(event) {
+		
 	});
 
 	$('#add-subject').unbind().click(function(event) {
@@ -86,6 +98,12 @@ function clickbtn() {
 		closePopup();
 	});
 
+	//Menu save: 
+	$('#save-game').unbind().click(function(event) {
+		$("#div-menu").hide("slow");
+		save(2);
+	});
+
 }
 
 function generatetable() {
@@ -103,7 +121,7 @@ function generatetable() {
 	$('#bottom-bar').width(browser_width);
 	$('#side-bar').height(browser_height);
 
-	table(browser_width, browser_height+120, nQuestions, nSubjects);
+	table(browser_width, browser_height+60, nQuestions, nSubjects);
 
 	clickbtn();
 }
@@ -111,7 +129,7 @@ function generatetable() {
 function update() {
 
 	$('#main_table').text('');
-	table(browser_width, browser_height+120, nQuestions, nSubjects);
+	table(browser_width, browser_height+60, nQuestions, nSubjects);
 
 	clickbtn();
 
@@ -127,7 +145,7 @@ function questions() {
 }
 
 function display_question() {
-	var idSplit = activeId.split("_");
+	var idSplit = activeId_btn.split("_");
 	var questions_array_split = questions_array[idSplit[1]-1][idSplit[2]-1].split(":");
 
 	$('#input-question').val(questions_array_split[0]);
@@ -160,7 +178,7 @@ function update_questions_array(input) {
 }
 
 function update_questions_array_button() {
-	var idSplit = activeId.split("_");
+	var idSplit = activeId_btn.split("_");
 	questions_array[idSplit[1]-1][idSplit[2]-1] = $('#input-question').val() + ":" + $('#input-answer').val();
 }
 
