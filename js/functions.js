@@ -4,20 +4,25 @@ function showPopup(which) {
 	$('#dimmer').unbind().click(function(event){
 		closePopup();
 	});
-
-	if (which == 1){
-		//New game
-		$('#new-game-popup').show();
-	}
-	if (which == 2){
-		//load game
-		$('#load-game-popup').show();
-	}
-	if (which == 3) {
-		$('#make-game-popup').show();
-	}
-	if (which == 4) {
-		$('#edit-buttons-popup').show();
+	
+	switch(which){
+		case 1:
+			//New game
+			$('#new-game-popup').show();
+			break;
+		case 2:
+			//load game
+			$('#load-game-popup').show();
+			break;
+		case 3:
+			$('#make-game-popup').show();
+			break;
+		case 4:
+			$('#edit-buttons-popup').show();
+			break;
+		case 5:
+			$('#edit-text-popup').show();
+			break;	
 	}
 
 }
@@ -29,6 +34,7 @@ function closePopup() {
 	$('#load-game-popup').hide();
 	$('#make-game-popup').hide();
 	$('#edit-buttons-popup').hide();
+	$('#edit-text-popup').hide();
 }
 
 function generate_lists() {
@@ -106,70 +112,6 @@ function save(save_state){
 		var split = btn_id_save[i].split(":");
 		for(var x = 0; x < split.length; x++){
 			console.log(split[x]);
-		}
-	}
-}
-
-function loadState(fileData){
-
-	//Clear tables
-	$('#TEAMS_tr').text('');
-	$('#main_table').text('');
-
-	var fileData_split = fileData.split(";");
-	$('#newGame').remove();
-
-	var readNumber = 6;
-	
-	$('#title').text(fileData_split[0]);
-	teamnumber = parseInt(fileData_split[1]);
-	Width = parseInt(fileData_split[2]);
-	Height = parseInt(fileData_split[3]);
-	countdown = parseInt(fileData_split[4]);
-	activeTeam = parseInt(fileData_split[5])
-
-	makeScorer(); table(Width, Height, ); Questions(); //Generate the table
-
-	//Teams name and points
-	for(var i = 0; i < teamnumber; i++){
-		var fileData_split_split = fileData_split[readNumber].split(":");
-		var id = i+1;
-		$('#TEAM_' + id).text(fileData_split_split[0]);
-		TEAMPOINT[i] = parseInt(fileData_split_split[1]);
-		$('#TEAMSPOINT_' + id).text(fileData_split_split[1]);
-		readNumber++;
-	}
-
-	//Subjects name
-	for(var i = 0; i < Width; i++){
-		var id = i+1;
-		$('#subject_' + id).text(fileData_split[readNumber]);
-		readNumber++;
-	}
-
-	//Button stats
-	for(var i = 0; i < Width; i++){
-		for(var j =0; j < Height; j++){
-			var fileData_split_split = fileData_split[readNumber].split(":");
-			console.log(fileData_split_split[0] + ", " + fileData_split_split[1]);
-			var id = i + '_' + j;
-			if(fileData_split_split[1] == "true"){
-				document.getElementById(fileData_split_split[0]).disabled = true;
-				$('#' + fileData_split_split[0]).removeClass('btnQ_enable');
-			}
-			else
-			{
-				document.getElementById(fileData_split_split[0]).disabled = false;
-			}
-			readNumber++;
-		}
-	}
-
-	//Questions and answer
-	for(var i = 0; i < Width; i++){
-		for(var j = 0; j < Height; j++){
-			questions_array[i][j] = fileData_split[readNumber];
-			readNumber++;
 		}
 	}
 }
@@ -264,7 +206,7 @@ function table(w, h, Height, Width) {
 		var td = document.createElement('td');
 		var node = document.createTextNode("Subject " + i);
 		td.appendChild(node); 
-		td.setAttribute("height", htable); td.setAttribute("width", wtable); td.setAttribute("class", "table_box_subject"); td.setAttribute("id", "subject_" + i)
+		td.setAttribute("height", htable); td.setAttribute("width", wtable); td.setAttribute("class", "table_box_subject noselect"); td.setAttribute("id", "subject_" + i)
 		trhead.appendChild(td);
 	}
 

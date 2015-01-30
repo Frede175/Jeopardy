@@ -3,9 +3,11 @@ var nSubjects = 0;
 var browser_width = 0;
 var browser_height = 0;
 var btn_state = new Array();
+var subject_state = new Array();
+var title = "Title";
 var questions_array = new Array();
 var activeId_btn;
-var activeId_subject;
+var activeId_st;
 
 $(document).ready(function() {
 	generate_lists();
@@ -35,23 +37,35 @@ function clickbtn() {
 
 	});
 
-	$('.table_box_subject').unbind().dblclick(function(event) {
-		activeId_subject = this.id;
-		//do something :D
-
-	});
-
-	$('#title').unbind().dblclick(function(event) {
+	$('.table_box_subject').unbind().click(function(event) {
+		activeId_st = $(this);
+		console.log(activeId_st);
+		$('#input-edit').val(activeId_st.text());
+		$('#h1-edit-text').text('Edit text for: ' + activeId_st.text());
+		showPopup(5);
 		
 	});
 
+	$('#title').unbind().click(function(event) {
+		activeId_st = $(this);
+		$('#input-edit').val(activeId_st.text());
+		$('#h1-edit-text').text('Edit the title!');
+		showPopup(5);
+		
+	});
+
+	$('#submit-updateedit').click(function(event) {
+			activeId_st.text($('#input-edit').val());
+			closePopup();
+		});
+
 	$('#add-subject').unbind().click(function(event) {
 		if(nSubjects < 8){
-			update_btn_state();
+			update_state();
 			nSubjects++;
-			update_questions_array(1);
+			update_array(1);
 			update();
-			load_btn_state();
+			load_state();
 		}else{
 			alert("You can't create more than 8 subjects!");
 		}
@@ -59,11 +73,11 @@ function clickbtn() {
 
 	$('#remove-subject').unbind().click(function(event) {
 		if(nSubjects > 2){
-			update_btn_state()
+			update_state()
 			nSubjects--;
-			update_questions_array(2);
+			update_array(2);
 			update();
-			load_btn_state();
+			load_state();
 		}else{
 			alert("You can't have less than 2 subjects!");
 		}
@@ -71,11 +85,11 @@ function clickbtn() {
 
 	$('#add-question').unbind().click(function(event) {
 		if(nQuestions < 10){
-			update_btn_state();
+			update_state();
 			nQuestions++;
-			update_questions_array(3);
+			update_array(3);
 			update();
-			load_btn_state();
+			load_state();
 		}else{
 			alert("You can't have more than 10 questions!");
 		}
@@ -83,18 +97,18 @@ function clickbtn() {
 
 	$('#remove-question').unbind().click(function(event) {
 		if(nQuestions > 2){
-			update_btn_state();
+			update_state();
 			nQuestions--;
-			update_questions_array(4);
+			update_array(4);
 			update();
-			load_btn_state();
+			load_state();
 		}else{
 			alert("You can't have less than 2 questions!");
 		}
 	});
 
 	$('#submit-updatebutton').unbind().click(function(event) {
-		update_questions_array_button();
+		update_array_button();
 		closePopup();
 	});
 
@@ -152,7 +166,7 @@ function display_question() {
 	$('#input-answer').val(questions_array_split[1]);
 }
 
-function update_questions_array(input) {
+function update_array(input) {
 	switch(input){
 		case 1:
 			var number = questions_array.length;
@@ -182,7 +196,7 @@ function update_questions_array_button() {
 	questions_array[idSplit[1]-1][idSplit[2]-1] = $('#input-question').val() + ":" + $('#input-answer').val();
 }
 
-function update_btn_state() {
+function update_state() {
 	btn_state.length = 0;
 	btn_state = new Array(nSubjects);
 	for(var i = 0; i < nSubjects; i++){
@@ -192,11 +206,15 @@ function update_btn_state() {
 			btn_state[i][x] = $('#btn_' + id).hasClass('btn_pressed');
 		}
 	}
+	title = $('#title').text();
 
-	console.log(btn_state);
+	for(var i = 0; i < nSubjects; i++){
+		//needs to do something :D
+	}
+
 }
 
-function load_btn_state() {
+function load_state() {
 	for(var i = 0; i < nSubjects; i++){
 		if(typeof btn_state[i] !== "null" && typeof btn_state[i] !== 'undefined' ){
 			for(var x = 0; x < nQuestions; x++){

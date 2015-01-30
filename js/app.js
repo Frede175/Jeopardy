@@ -259,3 +259,69 @@ function points(state) {
 		document.getElementById(teamid).innerHTML = TEAMPOINT[activeTeam];
 	
 }
+
+function loadState(fileData){
+
+	//Clear tables
+	$('#TEAMS_tr').text('');
+	$('#main_table').text('');
+
+	var fileData_split = fileData.split(";");
+	$('#newGame').remove();
+
+	var readNumber = 6;
+	
+	$('#title').text(fileData_split[0]);
+	teamnumber = parseInt(fileData_split[1]);
+	Width = parseInt(fileData_split[2]);
+	Height = parseInt(fileData_split[3]);
+	countdown = parseInt(fileData_split[4]);
+	activeTeam = parseInt(fileData_split[5])
+	var h = window.innerHeight;
+	var w = window.innerWidth;
+
+	makeScorer(); table(w, h, Width, Height); Questions(); //Generate the table
+
+	//Teams name and points
+	for(var i = 0; i < teamnumber; i++){
+		var fileData_split_split = fileData_split[readNumber].split(":");
+		var id = i+1;
+		$('#TEAM_' + id).text(fileData_split_split[0]);
+		TEAMPOINT[i] = parseInt(fileData_split_split[1]);
+		$('#TEAMSPOINT_' + id).text(fileData_split_split[1]);
+		readNumber++;
+	}
+
+	//Subjects name
+	for(var i = 0; i < Width; i++){
+		var id = i+1;
+		$('#subject_' + id).text(fileData_split[readNumber]);
+		readNumber++;
+	}
+
+	//Button stats
+	for(var i = 0; i < Width; i++){
+		for(var j =0; j < Height; j++){
+			var fileData_split_split = fileData_split[readNumber].split(":");
+			console.log(fileData_split_split[0] + ", " + fileData_split_split[1]);
+			var id = i + '_' + j;
+			if(fileData_split_split[1] == "true"){
+				document.getElementById(fileData_split_split[0]).disabled = true;
+				$('#' + fileData_split_split[0]).removeClass('btnQ_enable');
+			}
+			else
+			{
+				document.getElementById(fileData_split_split[0]).disabled = false;
+			}
+			readNumber++;
+		}
+	}
+
+	//Questions and answer
+	for(var i = 0; i < Width; i++){
+		for(var j = 0; j < Height; j++){
+			questions_array[i][j] = fileData_split[readNumber];
+			readNumber++;
+		}
+	}
+}

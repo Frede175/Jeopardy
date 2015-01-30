@@ -53,6 +53,14 @@
 				<button id="submit-updatebutton" class="center">Update</button>
 			</div>
 
+			<div id="edit-text-popup" >
+				<div class="center">
+					<h1 id="h1-edit-text">Edit</h1>
+					<input type="text" id="input-edit">
+				</div>
+				<button id="submit-updateedit" class="center">Update</button>
+			</div>
+
 		</div>
 
 		<div id="dimmer"></div>
@@ -76,7 +84,7 @@
 		
 		
 		<!-- Table to append to with javascript! -->
-		<p id="title" style="display: none">Title</p>
+		<p id="title" style="display: none" class="noselect">Title</p>
 		<div id="make-table">
 			<table>
 				<tbody id="main_table">
@@ -110,7 +118,7 @@
 		</div>
 		<!--Script -->
 
-		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+		<script type="text/javascript" src="js/jquery-latest.js"></script>
 		<script type="text/javascript" src="js/bootstrap.js"></script>
 		<script type="text/javascript" src="js/FileSaver.js"></script>
 		<script type="text/javascript" src="js/functions.js"></script>
