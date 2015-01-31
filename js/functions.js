@@ -48,6 +48,8 @@ function generate_lists() {
 }
 
 function save(save_state){
+	//Save_state is the number I'll use for checking of it is the make.js or app.js save!
+
 
 	btn_id_save = [];
 

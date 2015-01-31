@@ -250,6 +250,10 @@ body {
 	background-color: #7cfc00;
 }
 
+.subject_pressed {
+	color: #7cfc00;
+}
+
 .Timer {
 	font-size: 30px;
 	color: blue;

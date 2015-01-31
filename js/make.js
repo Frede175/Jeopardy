@@ -4,10 +4,12 @@ var browser_width = 0;
 var browser_height = 0;
 var btn_state = new Array();
 var subject_state = new Array();
+var subjects_array = new Array();
 var title = "Title";
+var title_state;
 var questions_array = new Array();
 var activeId_btn;
-var activeId_st;
+var activeId_st = [];
 
 $(document).ready(function() {
 	generate_lists();
@@ -38,24 +40,36 @@ function clickbtn() {
 	});
 
 	$('.table_box_subject').unbind().click(function(event) {
-		activeId_st = $(this);
-		console.log(activeId_st);
-		$('#input-edit').val(activeId_st.text());
-		$('#h1-edit-text').text('Edit text for: ' + activeId_st.text());
+		activeId_st[0] = $(this);
+		activeId_st[1] = this.id;
+		$('#input-edit').val(activeId_st[0].text());
+		$('#h1-edit-text').text('Edit text for: ' + activeId_st[0].text());
+		$(this).addClass('subject_pressed');
 		showPopup(5);
 		
 	});
 
 	$('#title').unbind().click(function(event) {
-		activeId_st = $(this);
-		$('#input-edit').val(activeId_st.text());
+		activeId_st[0] = $(this);
+		activeId_st[1] = this.id;
+		$('#input-edit').val(activeId_st[0].text());
 		$('#h1-edit-text').text('Edit the title!');
+		$(this).addClass('subject_pressed');
 		showPopup(5);
 		
 	});
 
 	$('#submit-updateedit').click(function(event) {
-			activeId_st.text($('#input-edit').val());
+			activeId_st[0].text($('#input-edit').val());
+			if(activeId_st[1] === "title"){
+				title = $('#input-edit').val();
+			}
+			else
+			{
+				var id_split = activeId_st[1].split("_");
+				var id = parseInt(id_split[1])-1;
+				subjects_array[id] = $('#input-edit').val();
+			}
 			closePopup();
 		});
 
@@ -108,7 +122,7 @@ function clickbtn() {
 	});
 
 	$('#submit-updatebutton').unbind().click(function(event) {
-		update_array_button();
+		update_questions_array_button();
 		closePopup();
 	});
 
@@ -128,7 +142,7 @@ function generatetable() {
 	nQuestions = parseInt($('#questions-number').val());
 	nSubjects = parseInt($('#subjects-number').val());
 
-	questions();
+	create_array();
 
 	$('#make-table').height(browser_height);
 	$('#make-table').width(browser_width);
@@ -149,13 +163,18 @@ function update() {
 
 }
 
-function questions() {
+function create_array() {
+	subjects_array = new Array(nSubjects);
 	for(var i = 0; i < nSubjects; i++){
 		questions_array[i] = new Array(nQuestions);
 		for(var x = 0; x < nQuestions; x++){
 			questions_array[i][x] = ":What is";
 		}
+
+		subjects_array[i] = "Subject " + (i+1);
+		
 	}
+	
 }
 
 function display_question() {
@@ -169,18 +188,27 @@ function display_question() {
 function update_array(input) {
 	switch(input){
 		case 1:
+
+			//Questions Array:
 			var number = questions_array.length;
-			questions_array[questions_array.length] = new Array(nQuestions);
+			questions_array[number] = new Array(nQuestions);
 			for(var i = 0; i < nQuestions; i++){
 				questions_array[number][i] = ":What is";
 			}
+
+			//Subjects Array:
+			number = subjects_array.length;
+			subjects_array[number] = "Subject " + (number+1); 
+
 			break;
 		case 2:
 			questions_array.splice(questions_array.length-1, 1);
+			subjects_array.splice(subjects_array.length-1, 1);
 			break;
 		case 3:
 			for(var i = 0; i < nSubjects; i++){
-				questions_array[i][questions_array[i].length] = ":What is";
+				var number = questions_array[i].length;
+				questions_array[i][number] = ":What is";
 			}
 			break;
 		case 4:
@@ -206,16 +234,26 @@ function update_state() {
 			btn_state[i][x] = $('#btn_' + id).hasClass('btn_pressed');
 		}
 	}
-	title = $('#title').text();
 
+	subject_state.length = 0;
+	subject_state = new Array(nSubjects);
 	for(var i = 0; i < nSubjects; i++){
-		//needs to do something :D
+		subject_state[i] = $('#subject_' + (i+1)).hasClass('subject_pressed');
 	}
 
+	title = $('#title').hasClass('subject_pressed');
 }
 
 function load_state() {
 	for(var i = 0; i < nSubjects; i++){
+		$('#subject_' + (i+1)).text(subjects_array[i]);
+
+		if(typeof subject_state[i] !== "null" && typeof subject_state[i] !== 'undefined'){
+			if(subject_state[i] === true){
+				$('#subject_' + (i+1)).addClass('subject_pressed');
+			}
+		}
+
 		if(typeof btn_state[i] !== "null" && typeof btn_state[i] !== 'undefined' ){
 			for(var x = 0; x < nQuestions; x++){
 			var id = (i+1) + "_" + (x+1);
@@ -226,5 +264,9 @@ function load_state() {
 				}
 			}
 		}
+	}
+
+	if(title === true){
+		$('#title').addClass('subject_pressed');
 	}
 }
