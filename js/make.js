@@ -129,7 +129,7 @@ function clickbtn() {
 	//Menu save: 
 	$('#save-game').unbind().click(function(event) {
 		$("#div-menu").hide("slow");
-		save(2);
+		save(0, nSubjects, nQuestions, questions_array);
 	});
 
 }

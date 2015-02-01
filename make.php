@@ -14,7 +14,7 @@
 		<div id="popup">
 			<img src="images/close.png" id="close">
 
-			<div id="make-game-popup">
+			<div id="make-game-popup" class="popup">
 				<h1>Welcome to the jeopardy maker!</h1>
 				<h3 class="center">In The jeopardy maker you can make your jeopardy in custom sizes!</h3>
 				<div id="select-newgame">
@@ -37,7 +37,7 @@
 				<h4 class="center">You can change the number of teams, subjects and questions later!</h4>
 			</div>
 
-			<div id="edit-buttons-popup" > 
+			<div id="edit-buttons-popup" class="popup"> 
 				<div class="center">
 
 					<h1 id="button-text">Edit button for</h1>
@@ -53,7 +53,7 @@
 				<button id="submit-updatebutton" class="center">Update</button>
 			</div>
 
-			<div id="edit-text-popup" >
+			<div id="edit-text-popup" class="popup">
 				<div class="center">
 					<h1 id="h1-edit-text">Edit</h1>
 					<input type="text" id="input-edit">
@@ -86,7 +86,7 @@
 		<!-- Table to append to with javascript! -->
 		<p id="title" style="display: none" class="noselect">Title</p>
 		<div id="make-table">
-			<table>
+			<table class="fixed">
 				<tbody id="main_table">
 
 				</tbody>

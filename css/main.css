@@ -123,7 +123,7 @@ body {
 	display: block;
 }
 
-#submit-makenewgame, #submit-updatebutton, #submit-updateedit {
+#submit-makenewgame, #submit-updatebutton, #submit-updateedit, #submit-startgame-teams {
 	height: 40px;
 	font-size: 20px;
 	width: 300px;
@@ -132,7 +132,7 @@ body {
 	margin-top: 20px;
 }
 
-#new-game-popup, #load-game-popup, #make-game-popup, #edit-buttons-popup, #edit-text-popup {
+.popup {
 	margin-top:50px;
 	display: none;
 }
@@ -169,6 +169,14 @@ body {
 }
 
 /* end popup */
+
+.fixed {
+	table-layout: fixed;
+}
+
+.fixed td {
+	overflow: hidden;
+}
 
 .current {
 	background-color: green;

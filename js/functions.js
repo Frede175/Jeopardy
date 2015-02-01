@@ -1,3 +1,5 @@
+var readerResult;
+
 function showPopup(which) {
 	$('#popup').show();
 	$('#dimmer').show();
@@ -22,7 +24,10 @@ function showPopup(which) {
 			break;
 		case 5:
 			$('#edit-text-popup').show();
-			break;	
+			break;
+		case 6:
+			$('#teams-popup').show();
+			break;
 	}
 
 }
@@ -30,11 +35,12 @@ function showPopup(which) {
 function closePopup() {
 	$('#popup').hide();
 	$('#dimmer').hide();
-	$('#new-game-popup').hide();
+	$('.popup').hide();
+	/*$('#new-game-popup').hide();
 	$('#load-game-popup').hide();
 	$('#make-game-popup').hide();
 	$('#edit-buttons-popup').hide();
-	$('#edit-text-popup').hide();
+	$('#edit-text-popup').hide();*/
 }
 
 function generate_lists() {
@@ -47,37 +53,41 @@ function generate_lists() {
 	}
 }
 
-function save(save_state){
+function save(save_state, Width, Height, questions_array, teamnumber, activeTeam, TEAMPOINT){
 	//Save_state is the number I'll use for checking of it is the make.js or app.js save!
 
+	if(save_state == 1){
+		var btn_id_save = [];
 
-	btn_id_save = [];
-
-		$('.btnQ').each(function() {
-			btn_id_save.push(this.id + ":" + this.disabled);
-		});
-
+			$('.btnQ').each(function() {
+				btn_id_save.push(this.id + ":" + this.disabled);
+			});
+	}
 	//Make file with data:
 	var saveData;
 	var separator = ";"
 
 	//title
 	saveData = $('#title').text() + separator;
-	
-	//Adds how many teams there is
-	saveData += teamnumber + separator
-	+ Width + separator
-	+ Height + separator
-	+ countdown + separator
-	+ activeTeam + separator;
+	 
+	if(save_state == 1){
+		saveData += teamnumber + separator;
+	}
+	else
+	{
+		saveData += 0 + separator;
+	}
+	saveData += Width + separator + Height + separator;
 
-
-	for(var i = 0; i < teamnumber; i++){
-		var id = i+1;
-		saveData += $('#TEAM_' + id).text()
-		+ ":"
-		+ TEAMPOINT[i] 
-		+ separator;
+	if(save_state == 1){
+		saveData += countdown + separator + activeTeam + separator;
+		for(var i = 0; i < teamnumber; i++){
+			var id = i+1;
+			saveData += $('#TEAM_' + id).text()
+			+ ":"
+			+ TEAMPOINT[i] 
+			+ separator;
+		}
 	}
 
 	//Subjects saved here
@@ -86,8 +96,10 @@ function save(save_state){
 		saveData += $('#subject_' + id).text() + separator;
 	}
 
-	for(var i = 0; i < btn_id_save.length; i++){
-		saveData += btn_id_save[i] + separator;
+	if(save_state == 1){
+		for(var i = 0; i < btn_id_save.length; i++){
+			saveData += btn_id_save[i] + separator;
+		}
 	}
 
 	//Save Questions
@@ -102,20 +114,6 @@ function save(save_state){
 	saveAs(blobObject, 'JeopardySaveFile.txt'); //JSave
 
 	saveData = "SaveFile;";
-
-
-
-	// For debug only --------------------------------------------------
-	for(var i = 0; i < btn_id_save.length; i++){
-		console.log(btn_id_save[i]);
-	}
-
-	for(var i = 0; i < btn_id_save.length; i++){
-		var split = btn_id_save[i].split(":");
-		for(var x = 0; x < split.length; x++){
-			console.log(split[x]);
-		}
-	}
 }
 
 function clickmenu() {
@@ -152,6 +150,12 @@ function clickmenu() {
 		clickbtn();
 	});
 
+	$('#submit-startgame-teams').unbind().click(function(event) {
+		var team = parseInt($('#teams-number-team').val());
+		closePopup();
+		loadState(readerResult, team);
+	});
+
 	$('#load-game').unbind().click(function(event) {
 		showPopup(2);
 	});
@@ -178,7 +182,9 @@ function clickmenu() {
 			var reader = new FileReader();
 
 			reader.onload = function(e) {
-				loadState(reader.result);
+				checkteams(reader.result)
+				readerResult = reader.result;
+				clickmenu();
 				clickbtn();
 			}
 
@@ -250,4 +256,15 @@ function setHeight(winH, y) {
 
 function setWidth(winW, x) {
 	return (winW-150)/x;
+}
+
+function checkteams(data) {
+	var data_split = data.split(";");
+	if(data_split[1] > 0){
+		return;
+	}
+	else
+	{
+		showPopup(6);
+	}
 }

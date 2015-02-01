@@ -4,7 +4,6 @@
 	var countdown = 0;
 	var Width = 0;
 	var Height = 0;
-	var btn_id_save = []; // Test only
 	var questions_array = new Array(Width);
 	var Questions_moveon = 0;
 
@@ -59,7 +58,7 @@ function clickbtn() {
 	//Menu save:
 	$('#save-game').unbind().click(function(event) {
 		$("#div-menu").hide("slow");
-		save(1);
+		save(1, Width, Height, questions_array, teamnumber, activeTeam, TEAMPOINT);
 	});
 
 }
@@ -260,7 +259,7 @@ function points(state) {
 	
 }
 
-function loadState(fileData){
+function loadState(fileData, team){
 
 	//Clear tables
 	$('#TEAMS_tr').text('');
@@ -268,28 +267,37 @@ function loadState(fileData){
 
 	var fileData_split = fileData.split(";");
 	$('#newGame').remove();
-
-	var readNumber = 6;
 	
 	$('#title').text(fileData_split[0]);
 	teamnumber = parseInt(fileData_split[1]);
 	Width = parseInt(fileData_split[2]);
 	Height = parseInt(fileData_split[3]);
-	countdown = parseInt(fileData_split[4]);
-	activeTeam = parseInt(fileData_split[5])
+	if(teamnumber > 0){
+		countdown = parseInt(fileData_split[4]);
+		activeTeam = parseInt(fileData_split[5])
+		var readNumber = 6;
+	}
+	else{
+		var readNumber = 4;
+		teamnumber = team;
+		countdown = 60;
+	}
+
 	var h = window.innerHeight;
 	var w = window.innerWidth;
 
 	makeScorer(); table(w, h, Width, Height); Questions(); //Generate the table
 
-	//Teams name and points
-	for(var i = 0; i < teamnumber; i++){
-		var fileData_split_split = fileData_split[readNumber].split(":");
-		var id = i+1;
-		$('#TEAM_' + id).text(fileData_split_split[0]);
-		TEAMPOINT[i] = parseInt(fileData_split_split[1]);
-		$('#TEAMSPOINT_' + id).text(fileData_split_split[1]);
-		readNumber++;
+	if(parseInt(fileData_split[1] == 0)){
+		//Teams name and points
+		for(var i = 0; i < teamnumber; i++){
+			var fileData_split_split = fileData_split[readNumber].split(":");
+			var id = i+1;
+			$('#TEAM_' + id).text(fileData_split_split[0]);
+			TEAMPOINT[i] = parseInt(fileData_split_split[1]);
+			$('#TEAMSPOINT_' + id).text(fileData_split_split[1]);
+			readNumber++;
+		}
 	}
 
 	//Subjects name
@@ -299,21 +307,23 @@ function loadState(fileData){
 		readNumber++;
 	}
 
-	//Button stats
-	for(var i = 0; i < Width; i++){
-		for(var j =0; j < Height; j++){
-			var fileData_split_split = fileData_split[readNumber].split(":");
-			console.log(fileData_split_split[0] + ", " + fileData_split_split[1]);
-			var id = i + '_' + j;
-			if(fileData_split_split[1] == "true"){
-				document.getElementById(fileData_split_split[0]).disabled = true;
-				$('#' + fileData_split_split[0]).removeClass('btnQ_enable');
+	if(parseInt(fileData_split[1] == 0)){
+		//Button stats
+		for(var i = 0; i < Width; i++){
+			for(var j =0; j < Height; j++){
+				var fileData_split_split = fileData_split[readNumber].split(":");
+				console.log(fileData_split_split[0] + ", " + fileData_split_split[1]);
+				var id = i + '_' + j;
+				if(fileData_split_split[1] == "true"){
+					document.getElementById(fileData_split_split[0]).disabled = true;
+					$('#' + fileData_split_split[0]).removeClass('btnQ_enable');
+				}
+				else
+				{
+					document.getElementById(fileData_split_split[0]).disabled = false;
+				}
+				readNumber++;
 			}
-			else
-			{
-				document.getElementById(fileData_split_split[0]).disabled = false;
-			}
-			readNumber++;
 		}
 	}
 
@@ -324,4 +334,6 @@ function loadState(fileData){
 			readNumber++;
 		}
 	}
+
+	clickbtn();
 }

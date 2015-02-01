@@ -15,12 +15,12 @@
 		<div id="popup">
 			<img src="images/close.png" id="close">
 
-			<div id="load-game-popup">
+			<div id="load-game-popup" class="popup">
 				<h1>Load Save file</h1>
 				<input class="center" type="file" name="FileChoser" id="loadState"/>
 			</div>
 
-			<div id="new-game-popup">
+			<div id="new-game-popup" class="popup">
 				<h1>New game</h1>
 					<h3 class="center">This generates a jeopardy with generated questions and answers</h3>
 				<div id="select-newgame">
@@ -44,6 +44,22 @@
 					</table>
 					<button id="submit-newgame" class="center">Make new game!</button>
 				</div>
+			</div>
+
+			<div id="teams-popup" class="popup">
+				<h1 class="center">New game from template!</h1>
+				<table>
+					<tr>
+						<td><P>Select number of teams:  </P></td>
+						<td class="select-style"><select id="teams-number-team" class="select_lists-8"></select></td>
+					</tr>
+				</table>
+
+				<div id="teams-name-append">
+					
+				</div>
+
+				<button id="submit-startgame-teams" class="center">Start the game!</button>
 			</div>
 		</div>
 
@@ -80,7 +96,7 @@
 		</div>
 		
 		<div id="TEAMS_table">
-			<table>
+			<table class="fixed">
 				<tbody id="main_table" style="display:">
 
 				</tbody>
