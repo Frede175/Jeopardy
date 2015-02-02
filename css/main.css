@@ -227,6 +227,8 @@ body {
 	height: 95%; 
 	font-size: 40px;
 	background-color: #FF5858;
+	text-decoration: none;
+	border: none;
 }
 
 .center {
@@ -250,12 +252,12 @@ body {
 }
 
 .btnQ_enable:hover {
-	background-color: #252525;
-	color: #ffffff;
+	background-color: #bbbbbb;
+	/*color: #ffffff;*/
 }
 
 .btn_pressed {
-	background-color: #7cfc00;
+	background-color: #68b54d;
 }
 
 .subject_pressed {

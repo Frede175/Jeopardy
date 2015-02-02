@@ -36,11 +36,6 @@ function closePopup() {
 	$('#popup').hide();
 	$('#dimmer').hide();
 	$('.popup').hide();
-	/*$('#new-game-popup').hide();
-	$('#load-game-popup').hide();
-	$('#make-game-popup').hide();
-	$('#edit-buttons-popup').hide();
-	$('#edit-text-popup').hide();*/
 }
 
 function generate_lists() {
