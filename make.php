@@ -17,7 +17,7 @@
 			<div id="make-game-popup" class="popup">
 				<h1>Welcome to the jeopardy maker!</h1>
 				<h3 class="center">In The jeopardy maker you can make your jeopardy in custom sizes!</h3>
-				<div id="select-newgame">
+				<div class="select-newgame">
 					<table>
 						<tr>
 							<td><p>The number of subjects:  </p></td>
@@ -56,7 +56,7 @@
 			<div id="edit-text-popup" class="popup">
 				<div class="center">
 					<h1 id="h1-edit-text">Edit</h1>
-					<input type="text" id="input-edit">
+					<input type="text" class="input-edit">
 				</div>
 				<button id="submit-updateedit" class="center">Update</button>
 			</div>

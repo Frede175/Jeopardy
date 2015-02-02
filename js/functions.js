@@ -1,4 +1,5 @@
 var readerResult;
+var team;
 
 function showPopup(which) {
 	$('#popup').show();
@@ -145,10 +146,25 @@ function clickmenu() {
 		clickbtn();
 	});
 
-	$('#submit-startgame-teams').unbind().click(function(event) {
-		var team = parseInt($('#teams-number-team').val());
+	$('#submit-teams-continue').unbind().click(function(event) {
+		team = parseInt($('#teams-number-team').val());
+		$('#teams-popup-start').hide();
+		for(var i = 0; i < team; i++){
+			var input = document.createElement('input');
+			input.setAttribute('type', 'text'); input.setAttribute('class', 'input-edit center'); input.setAttribute('id', 'team-input-' + i);
+			$('#teams-name-append').append(input);
+			$('#team-input-' + i).val("Team " + (i+1));
+		}
+		$('#teams-popup-end').show();
+	});
+
+	$('#submit-newgame-teams').unbind().click(function(event) {
 		closePopup();
-		loadState(readerResult, team);
+		var team_names = [];
+		for(var i = 0; i < team; i++){
+			team_names.push($('#team-input-' + i).val());
+		}
+		loadState(readerResult, team, team_names);
 	});
 
 	$('#load-game').unbind().click(function(event) {

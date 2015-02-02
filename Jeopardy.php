@@ -22,8 +22,8 @@
 
 			<div id="new-game-popup" class="popup">
 				<h1>New game</h1>
-					<h3 class="center">This generates a jeopardy with generated questions and answers</h3>
-				<div id="select-newgame">
+				<h3 class="center">This generates a jeopardy with generated questions and answers</h3>
+				<div class="select-newgame">
 					<table>
 						<tr>
 							<td><P>The number of teams:  </P></td>
@@ -47,19 +47,26 @@
 			</div>
 
 			<div id="teams-popup" class="popup">
-				<h1 class="center">New game from template!</h1>
-				<table>
-					<tr>
-						<td><P>Select number of teams:  </P></td>
-						<td class="select-style"><select id="teams-number-team" class="select_lists-8"></select></td>
-					</tr>
-				</table>
-
-				<div id="teams-name-append">
-					
+				<div id="teams-popup-start">
+					<h1 class="center">New game from template!</h1>
+					<div class="select-newgame">
+						<table>
+							<tr>
+								<td><P>Select number of teams:  </P></td>
+								<td class="select-style"><select id="teams-number-team" class="select_lists-8"></select></td>
+							</tr>
+						</table>
+					</div>
+					<button id="submit-teams-continue" class="center">Continue</button>
 				</div>
+				<div id="teams-popup-end" style="display:none">
+					<h1 class="center">Team names!</h1>
+					<div id="teams-name-append" class="center">
+						
+					</div>
 
-				<button id="submit-startgame-teams" class="center">Start the game!</button>
+					<button id="submit-newgame-teams" class="center">Start the game!</button>
+				</div>
 			</div>
 		</div>
 

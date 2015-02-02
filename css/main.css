@@ -74,7 +74,7 @@ body {
 	text-align: center;
 }
 
-#select-newgame {
+.select-newgame {
 	width: 300px;
 	margin: 0 auto;
 }
@@ -110,7 +110,7 @@ body {
 	outline: none;
 }
 
-#select-newgame p {
+.select-newgame p {
 	margin: 10px 0px 10px 0px;
 }
 
@@ -123,7 +123,7 @@ body {
 	display: block;
 }
 
-#submit-makenewgame, #submit-updatebutton, #submit-updateedit, #submit-startgame-teams {
+#submit-makenewgame, #submit-updatebutton, #submit-updateedit, #submit-newgame-teams, #submit-teams-continue {
 	height: 40px;
 	font-size: 20px;
 	width: 300px;
@@ -144,8 +144,9 @@ body {
 	resize: none;
 }
 
-#input-edit {
+.input-edit {
 	font-size: 20px;
+	margin-top: 10px;
 }
 
 #close {

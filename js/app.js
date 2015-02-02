@@ -259,7 +259,7 @@ function points(state) {
 	
 }
 
-function loadState(fileData, team){
+function loadState(fileData, team, team_names){
 
 	//Clear tables
 	$('#TEAMS_tr').text('');
@@ -298,6 +298,13 @@ function loadState(fileData, team){
 			$('#TEAMSPOINT_' + id).text(fileData_split_split[1]);
 			readNumber++;
 		}
+	}
+	else
+	{
+		for (var i = 0; i < teamnumber; i++) {
+			var id = i+1;
+			$('#TEAM_' + id).text(team_names[i]);
+		};
 	}
 
 	//Subjects name
