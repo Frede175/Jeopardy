@@ -92,17 +92,17 @@
 		</div>
 
 		<p id="title" style="display: none">Title</p>
-		<div id="TEAMS_points">
+		<div id="teams_points">
 			<table>
 				<tbody>
-					<tr id="TEAMS_tr">
+					<tr id="teams_tr">
 
 					</tr>
 				</tbody>
 			</table>
 		</div>
 		
-		<div id="TEAMS_table">
+		<div id="teams_table">
 			<table class="fixed">
 				<tbody id="main_table" style="display:">
 
@@ -120,7 +120,7 @@
 
 		<div id="Questions" style="display:none" class="center">
 
-			<p class="Timer">Time left: <p id="timer_countdown" class="Timer">0</p></p>
+			<p class="timer">Time left: <p id="timer_countdown" class="timer">0</p></p>
 
 			<h1 id="Question">Question not loaded</h1>
 

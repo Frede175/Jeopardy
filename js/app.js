@@ -73,39 +73,39 @@ function makeScorer() {
 	var wTeam = w/teamnumber;
 
 	//Points for the teams...
-	var Points = 0;
+	var points = 0;
 	
 	$('#title').attr("style", "");
 
 	for(var i = 1; i <= teamnumber; i++){
 
 		var td = document.createElement('td');
-		td.setAttribute("id", "TEAM_td_"+ i); td.setAttribute("class", "TD_TEAMPOINT"); td.setAttribute("width", wTeam);
+		td.setAttribute("id", "team_td_"+ i); td.setAttribute("class", "td_teampoint"); td.setAttribute("width", wTeam);
 
 		var p = document.createElement('p');
 		var p1 = document.createElement('p');
 		var p2 = document.createElement('p');
 
-		p.setAttribute("class", "TEAMS"); p.setAttribute("id", "TEAM_" + i);
+		p.setAttribute("class", "teams"); p.setAttribute("id", "team_" + i);
 		var node = document.createTextNode("Team " + i);
 		p.appendChild(node);
 
-		p1.setAttribute("class", "TEAMS");
+		p1.setAttribute("class", "teams");
 		var node = document.createTextNode(": ");
 		p1.appendChild(node);
 
-		p2.setAttribute("class", "TEAMS"); p2.setAttribute("id", "TEAMSPOINT_" + i)
-		var node = document.createTextNode(Points);
+		p2.setAttribute("class", "teams"); p2.setAttribute("id", "teamspoint_" + i)
+		var node = document.createTextNode(points);
 		p2.appendChild(node);
 
 		td.appendChild(p);
 		td.appendChild(p1);
 		td.appendChild(p2);
 
-		document.getElementById('TEAMS_tr').appendChild(td);
+		document.getElementById('teams_tr').appendChild(td);
 
 		//Adds a new team!! --------------------- Adds a new team!!
-		TEAMPOINT[TEAMPOINT.length] = Points;
+		TEAMPOINT[TEAMPOINT.length] = points;
 
 		
 	}
@@ -115,7 +115,7 @@ function makeScorer() {
 	console.log("Number of teams: " + TEAMPOINT.length);
 
 	var id = activeTeam+1;
-	$('#TEAM_td_' + id).addClass("current");
+	$('#team_td_' + id).addClass("current");
 }
 
 function Questions() {
@@ -138,9 +138,9 @@ function changeTeam(){
 	}
 	console.log("Active Team is: " + activeTeam);
 
-	$('.TD_TEAMPOINT').removeClass('current');
+	$('.td_teampoint').removeClass('current');
 	var id = activeTeam + 1
-	$('#TEAM_td_' + id).addClass("current");
+	$('#team_td_' + id).addClass("current");
 }
 
 //need disable for btn_right and wrong
@@ -254,7 +254,7 @@ function points(state) {
 			}
 		}
 
-		var teamid = 'TEAMSPOINT_' + (activeTeam+1); //Teamspoint text field id for points
+		var teamid = 'teamspoint_' + (activeTeam+1); //Teamspoint text field id for points
 		document.getElementById(teamid).innerHTML = TEAMPOINT[activeTeam];
 	
 }
@@ -262,7 +262,7 @@ function points(state) {
 function loadState(fileData, team, team_names){
 
 	//Clear tables
-	$('#TEAMS_tr').text('');
+	$('#teams_tr').text('');
 	$('#main_table').text('');
 
 	var fileData_split = fileData.split(";");
@@ -293,9 +293,9 @@ function loadState(fileData, team, team_names){
 		for(var i = 0; i < teamnumber; i++){
 			var fileData_split_split = fileData_split[readNumber].split(":");
 			var id = i+1;
-			$('#TEAM_' + id).text(fileData_split_split[0]);
+			$('#team_' + id).text(fileData_split_split[0]);
 			TEAMPOINT[i] = parseInt(fileData_split_split[1]);
-			$('#TEAMSPOINT_' + id).text(fileData_split_split[1]);
+			$('#teamspoint_' + id).text(fileData_split_split[1]);
 			readNumber++;
 		}
 	}
@@ -303,7 +303,7 @@ function loadState(fileData, team, team_names){
 	{
 		for (var i = 0; i < teamnumber; i++) {
 			var id = i+1;
-			$('#TEAM_' + id).text(team_names[i]);
+			$('#team_' + id).text(team_names[i]);
 		};
 	}
 

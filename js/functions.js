@@ -116,7 +116,7 @@ function clickmenu() {
 	
 	$('#new-game').unbind().click(function(event) {
 		$("#div-menu").hide("slow");
-		$('#TEAMS_tr').text('');
+		$('#teams_tr').text('');
 		$('#main_table').text('');
 	/*	activeTeam = 0;
 		teamnumber = 4;

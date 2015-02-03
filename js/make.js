@@ -62,13 +62,13 @@ function clickbtn() {
 	$('#submit-updateedit').click(function(event) {
 			activeId_st[0].text($('#input-edit-id').val());
 			if(activeId_st[1] === "title"){
-				title = $('#input-edit').val();
+				title = $('#input-edit-id').val();
 			}
 			else
 			{
 				var id_split = activeId_st[1].split("_");
 				var id = parseInt(id_split[1])-1;
-				subjects_array[id] = $('#input-edit').val();
+				subjects_array[id] = $('#input-edit-id').val();
 			}
 			closePopup();
 		});
