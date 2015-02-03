@@ -56,7 +56,7 @@
 			<div id="edit-text-popup" class="popup">
 				<div class="center">
 					<h1 id="h1-edit-text">Edit</h1>
-					<input type="text" class="input-edit">
+					<input type="text" class="input-edit" id="input-edit-id">
 				</div>
 				<button id="submit-updateedit" class="center">Update</button>
 			</div>

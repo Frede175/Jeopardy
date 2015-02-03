@@ -16,7 +16,7 @@ $(document).ready(function() {
 
 function clickbtn() {
 	clickmenu();
-	// ----------------------------------- Button for  Q
+	// ----------------------------------- Button for  Questions
 	$('.btnQ').unbind().click(function() {
 
 		$(this).attr("disabled", "disabled");

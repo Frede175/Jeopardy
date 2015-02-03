@@ -225,7 +225,7 @@ function table(w, h, Height, Width) {
 		var td = document.createElement('td');
 		var node = document.createTextNode("Subject " + i);
 		td.appendChild(node); 
-		td.setAttribute("height", htable); td.setAttribute("width", wtable); td.setAttribute("class", "table_box_subject noselect"); td.setAttribute("id", "subject_" + i)
+		td.setAttribute("height", htable); td.setAttribute("width", wtable); td.setAttribute("class", "table_box_subject"); td.setAttribute("id", "subject_" + i)
 		trhead.appendChild(td);
 	}
 

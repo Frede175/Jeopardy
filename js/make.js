@@ -42,7 +42,7 @@ function clickbtn() {
 	$('.table_box_subject').unbind().click(function(event) {
 		activeId_st[0] = $(this);
 		activeId_st[1] = this.id;
-		$('#input-edit').val(activeId_st[0].text());
+		$('#input-edit-id').val(activeId_st[0].text());
 		$('#h1-edit-text').text('Edit text for: ' + activeId_st[0].text());
 		$(this).addClass('subject_pressed');
 		showPopup(5);
@@ -60,7 +60,7 @@ function clickbtn() {
 	});
 
 	$('#submit-updateedit').click(function(event) {
-			activeId_st[0].text($('#input-edit').val());
+			activeId_st[0].text($('#input-edit-id').val());
 			if(activeId_st[1] === "title"){
 				title = $('#input-edit').val();
 			}
