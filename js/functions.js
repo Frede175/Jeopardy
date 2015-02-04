@@ -2,8 +2,8 @@ var readerResult;
 var team;
 
 function showPopup(which) {
-	$('#popup').show();
-	$('#dimmer').show();
+	$('#popup').fadeIn("slow");
+	$('#dimmer').fadeIn("slow");
 	$('#dimmer').unbind().click(function(event){
 		closePopup();
 	});
@@ -11,32 +11,32 @@ function showPopup(which) {
 	switch(which){
 		case 1:
 			//New game
-			$('#new-game-popup').show();
+			$('#new-game-popup').fadeIn("slow");
 			break;
 		case 2:
 			//load game
-			$('#load-game-popup').show();
+			$('#load-game-popup').fadeIn("slow");
 			break;
 		case 3:
-			$('#make-game-popup').show();
+			$('#make-game-popup').fadeIn("slow");
 			break;
 		case 4:
-			$('#edit-buttons-popup').show();
+			$('#edit-buttons-popup').fadeIn("slow");
 			break;
 		case 5:
-			$('#edit-text-popup').show();
+			$('#edit-text-popup').fadeIn("slow");
 			break;
 		case 6:
-			$('#teams-popup').show();
+			$('#teams-popup').fadeIn("slow");
 			break;
 	}
 
 }
 
 function closePopup() {
-	$('#popup').hide();
-	$('#dimmer').hide();
-	$('.popup').hide();
+	$('#popup').fadeOut("slow");
+	$('#dimmer').fadeOut("slow");
+	$('.popup').fadeOut("slow");
 }
 
 function generate_lists() {
