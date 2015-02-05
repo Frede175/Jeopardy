@@ -6,7 +6,7 @@ body {
 }
 
 /*menu nav */
-
+/*
 #menu {
 	z-index:3;
 	position: fixed;
@@ -18,6 +18,8 @@ body {
 #menu:hover {
 	cursor: pointer;
 }
+
+*/
 
 #div-menu {
 	z-index: 2;

@@ -4,6 +4,7 @@
 
 		
 		<link rel="stylesheet" href="css/main.css"/>
+		<link rel="stylesheet" href="css/menu-animation.css"/>
 		<link href="css/bootstrap.min.css" rel="stylesheet"/>
 		<LINK REL="SHORTCUT ICON" HREF="images/logo.png">
 
@@ -66,7 +67,7 @@
 		<div id="dimmer"></div>
 			
 		<div>
-			<img src="images/menu.png" id="menu">
+			<!--<img src="images/menu.png" id="menu">-->
 
 			<div id="div-menu">
 				<ul>
