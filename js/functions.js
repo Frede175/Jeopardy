@@ -176,7 +176,7 @@ function clickmenu() {
 	});
 
 	$('#menu').unbind().click(function(event) {
-		$("#div-menu").toggle("slow");
+		$("#div-menu").toggle("slide", {direction: "right"});
 	});
 
 	window.onload = function() {

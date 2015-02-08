@@ -6,6 +6,7 @@
 		<link rel="stylesheet" href="css/main.css"/>
 		<link rel="stylesheet" href="css/menu-animation.css"/>
 		<link href="css/bootstrap.min.css" rel="stylesheet"/>
+		<link rel="stylesheet" href="css/jquery-ui.css"/>
 		<LINK REL="SHORTCUT ICON" HREF="images/logo.png">
 
 	</head>
@@ -67,11 +68,11 @@
 		<div id="dimmer"></div>
 			
 		<div>
-			<!--<img src="images/menu.png" id="menu">-->
+			<img src="images/menu.png" id="menu">
 
 			<div id="div-menu">
 				<ul>
-					<li><a href="index.html">Home</a></li>
+					<li><a href="index.php">Home</a></li>
 					<li><a href="make.php">Make</a></li>
 					<li><a href="Jeopardy.php">Play</a></li>
 					<li><a href="About.php">About</a></li>
@@ -120,6 +121,7 @@
 		<!--Script -->
 
 		<script type="text/javascript" src="js/jquery-latest.js"></script>
+		<script type="text/javascript" src="js/jquery-ui.js"></script>
 		<script type="text/javascript" src="js/bootstrap.js"></script>
 		<script type="text/javascript" src="js/FileSaver.js"></script>
 		<script type="text/javascript" src="js/functions.js"></script>
