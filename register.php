@@ -1,8 +1,3 @@
-<?php
-	include_once 'includes/register.inc.php';
-	include_once 'includes/functions.php';
-?>
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -16,6 +11,11 @@
 	</head>
 
 	<body>
+		<?php
+			include_once 'includes/register.inc.php';
+			include_once 'includes/functions.php';
+		?>
+
 		<div id="header">
 			<div id="nav">
 				<ul>
