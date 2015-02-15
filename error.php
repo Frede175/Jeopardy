@@ -11,6 +11,7 @@ if (! $error) {
         <meta charset="UTF-8">
         <title>Jeopardy: Registration Success</title>
         <link rel="stylesheet" href="css/index.css"/>
+        <link rel="stylesheet" href="css/error.css"/>
         <LINK REL="SHORTCUT ICON" HREF="images/logo.png">
     </head>
     <body>

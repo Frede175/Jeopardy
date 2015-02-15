@@ -61,3 +61,46 @@ function regformhash(form, uid, email, password, conf) {
     form.submit();
     return true;
 }
+
+function updateformhash(form, old, new1, new2) {
+	if(old.value == '' || new1.value == '' || new2.value == '') {
+		alert('You must enter in all the deteils! Please try again.');
+		return false;
+	}
+
+	if(new1.value.length < 6) {
+		alert('The new password must be at least 6 characters long. Please try again.');
+		return false;
+	}
+
+	re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+	if(!re.test(new1.value)) {
+		alert('The new Password must contain at least one number, one lowercase and one uppercase letter.  Please try again');
+        return false;
+	}
+
+	if(new1.value != new2.value) {
+		alert('Your password and confirmation do not match. Please try again');
+		return false;
+	}
+
+	var p_old = document.createElement('input');
+	var p_new = document.createElement('input');
+
+	form.appendChild(p_old);
+	p_old.name = "p_old";
+	p_old.type = "hidden";
+	p_old.value = hex_sha512(old.value);
+
+	form.appendChild(p_new);
+	p_new.name = "p_new";
+	p_new.type = "hidden";
+	p_new.value = hex_sha512(new1.value);
+
+	old.value = '';
+	new1.value = '';
+	new2.value = '';
+
+	form.submit();
+	return true;
+}

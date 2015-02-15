@@ -1,0 +1,9 @@
+<FILES "*.html">
+ForceType 'text/html; charset=UTF-8'
+</FILES>
+
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+RewriteRule ^([^\.]+)$ $1.html [NC,L]

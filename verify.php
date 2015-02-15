@@ -26,11 +26,32 @@
 		</div>
 
 		<div id="content">
-			<h1>Welcome to Jeopardy Webs</h1>
-			<h2>The site were you can create jeopardys in any size you want!</h2>
+			
+			<?php
+				include_once 'includes/db_connect.php';
+				include_once 'includes/verify.inc.php';
+				
+				$email = trim(mysqli_real_escape_string($mysqli, $_GET['email']));
+				$key = trim(mysqli_real_escape_string($mysqli, $_GET['key']));
+
+				if(isset($email) && isset($key)){
+
+					if(check($email, $key, $mysqli) == true){
+						echo '<h1 class="center">Account activated!</h1>';
+						echo '<p><a href="login">Click here to login!</a></p>';
+					}
+					else
+					{
+						print_r(error_get_last());
+						echo '<h1 class="center">There was a problem!</h1>';
+					}
+				}
+				else
+				{
+					echo '<p class="error">FAIL!</p>';
+				}
+			?>
 		</div>
 
-
 	</body>
-
 </html>

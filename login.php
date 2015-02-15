@@ -19,6 +19,7 @@
 		<meta charset="UTF-8">
 		<title>Jeopardy: login</title>
 		<link rel="stylesheet" href="css/index.css"/>
+		<link href="css/bootstrap.min.css" rel="stylesheet"/>
 		<LINK REL="SHORTCUT ICON" HREF="images/logo.png">
 		<script type="text/JavaScript" src="js/sha512.js"></script> 
         <script type="text/JavaScript" src="js/forms.js"></script>
@@ -29,13 +30,13 @@
 		<div id="header">
 			<div id="nav">
 				<ul>
-					<li><a href="index.php">Home</a></li>
-					<li><a href="make.php">Make</a></li>
-					<li><a href="Jeopardy.php">Play</a></li>
-					<li><a href="About.php">About</a></li>
+					<li><a href="index">Home</a></li>
+					<li><a href="make">Make</a></li>
+					<li><a href="Jeopardy">Play</a></li>
+					<li><a href="About">About</a></li>
 					<img class="right" src="images/logo.png" id="logo">
-					<a class="right" id="signup" href="register.php">Sign up</a>
-					<a class="right" id="login" href="login.php">Login</a>
+					<a class="right" id="signup" href="register">Sign up</a>
+					<a class="right" id="login" href="login">Login</a>
 				</ul>
 			</div>
 		</div>

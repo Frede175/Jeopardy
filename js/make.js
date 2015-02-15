@@ -87,7 +87,7 @@ function clickbtn() {
 
 	$('#remove-subject').unbind().click(function(event) {
 		if(nSubjects > 2){
-			update_state()
+			update_state();
 			nSubjects--;
 			update_array(2);
 			update();

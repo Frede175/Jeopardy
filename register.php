@@ -4,6 +4,7 @@
 		<meta charset="UTF-8">
 		<title>Jeopardy: register</title>
 		<link rel="stylesheet" href="css/index.css"/>
+		<link href="css/bootstrap.min.css" rel="stylesheet"/>
 		<LINK REL="SHORTCUT ICON" HREF="images/logo.png">
 		<script type="text/JavaScript" src="js/sha512.js"></script> 
         <script type="text/JavaScript" src="js/forms.js"></script>
@@ -11,10 +12,6 @@
 	</head>
 
 	<body>
-		<?php
-			include_once 'includes/register.inc.php';
-			include_once 'includes/functions.php';
-		?>
 
 		<div id="header">
 			<div id="nav">
@@ -32,7 +29,11 @@
 
 
 		<div id="content">
+
 			<?php
+				include_once 'includes/register.inc.php';
+				include_once 'includes/functions.php';
+			
 				if(!empty($error_msg)) {
 					echo $error_msg;
 				}

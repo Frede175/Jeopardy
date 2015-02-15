@@ -72,10 +72,10 @@
 
 			<div id="div-menu">
 				<ul>
-					<li><a href="index.php">Home</a></li>
-					<li><a href="make.php">Make</a></li>
-					<li><a href="Jeopardy.php">Play</a></li>
-					<li><a href="About.php">About</a></li>
+					<li><a href="index">Home</a></li>
+					<li><a href="make">Make</a></li>
+					<li><a href="Jeopardy">Play</a></li>
+					<li><a href="About">About</a></li>
 				</ul>
 				<ul id="ul-border">	
 					<li><a href="#" id="save-game">Save game</a></li>
