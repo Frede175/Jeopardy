@@ -20,33 +20,15 @@ sec_session_start();
 	</head>
 
 	<body>
-		<div id="header">
-			<div id="nav">
-				<ul>
-					<li><a href="index">Home</a></li>
-					<li><a href="make">Make</a></li>
-					<li><a href="Jeopardy">Play</a></li>
-					<li><a href="About">About</a></li>
-					<img class="right" src="images/logo.png" id="logo">
-					<a class="right" id="signup" href="register">Sign up</a>
-					<a class="right" id="login" href="login">Login</a>
-				</ul>
-			</div>
-		</div>
+
+	
+		<?php include_once 'views/header.php'; ?>
 
 
 		<?php if (login_check($mysqli) == true) : ?>
 			<div id="content_loggedin">
 
-				<div id="menubar">
-					<ul>
-						<li><a href="make-loggedin">Make a game</a></li>
-						<li><a href="Jeopardy-loggedin">Play a game</a></li>
-						<li><a href="manage-files">Manage files</a>
-						<li><a href="account-settings">Account settings</a></li>
-					</ul>
-
-				</div>
+				<?php include_once 'views/menubar.php'; ?>
 
 				<div id="menu-content">
 					<h1 class="center">Welcome <?php echo htmlentities($_SESSION['username']); ?></h1>

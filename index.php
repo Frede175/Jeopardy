@@ -11,19 +11,7 @@
 
 
 	<body>
-		<div id="header">
-			<div id="nav">
-				<ul>
-					<li><a href="index">Home</a></li>
-					<li><a href="make">Make</a></li>
-					<li><a href="Jeopardy">Play</a></li>
-					<li><a href="About">About</a></li>
-					<img class="right" src="images/logo.png" id="logo">
-					<a class="right" id="signup" href="register">Sign up</a>
-					<a class="right" id="login" href="login">Login</a>
-				</ul>
-			</div>
-		</div>
+		<?php include_once 'views/header.php'; ?>
 
 		<div id="content">
 			<h1>Welcome to Jeopardy Webs</h1>
