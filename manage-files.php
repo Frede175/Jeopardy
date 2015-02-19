@@ -12,6 +12,7 @@ sec_session_start();
 		<title>Jeopardy: Account settings</title>
 		<link rel="stylesheet" href="css/index.css"/>
 		<link rel="stylesheet" href="css/logged_in.css"/>
+		<link rel="stylesheet" href="css/manage-files.css"/>
 		<link href="css/bootstrap.min.css" rel="stylesheet"/>
 		<LINK REL="SHORTCUT ICON" HREF="images/logo.png">
 
@@ -31,9 +32,18 @@ sec_session_start();
 				<?php include_once 'views/menubar.php'; ?>
 
 				<div id="menu-content">
-					<?php
-						include_once 'includes/load_saves.php';
-					?>
+					<table id="filetable">
+						<thead>
+							<tr class="theadline">
+								<th>Name</th>
+								<th>Width</th>
+								<th>Height</th>
+							</tr>
+						</thead>
+						<?php
+							include_once 'includes/load_saves.php';
+						?>
+					</table>
 				</div>
 
 			</div>
