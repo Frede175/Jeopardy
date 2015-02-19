@@ -17,7 +17,7 @@
 
 		print_r(error_get_last());
 
-		if($savedb != '') {
+		if(!empty($savedb)) {
 			//Code for table on page!
 			foreach ($savedb as $key => $x) {
 				echo '<tbody>';
@@ -43,19 +43,25 @@
 	}
 
 	if($stmttemp = $mysqli->query("SELECT name, width, height FROM template WHERE user_id='$user_id' LIMIT 3")) {
-		$tempdb = array(
-			'name'=>array(),
-			'width'=>array(),
-			'height'=>array()
-		);
+		$tempdb = array();
+		$i = 0;
 		while($row = mysqli_fetch_assoc($stmttemp)) {
-			$tempdb['name'][] = $row['name'];
-			$tempdb['width'][] = $row['width'];
-			$tempdb['height'][] = $row['height'];
+			$tempdb[$i]['name'] = $row['name'];
+			$tempdb[$i]['width'] = $row['width'];
+			$tempdb[$i]['height'] = $row['height'];
+			$i++;
 		}
 
-		if($tempdb != '') {
-
+		if(!empty($tempdb)) {
+			foreach ($tempdb as $key => $x) {
+				echo '<tbody>';
+				echo '<tr class="saves">';
+				echo '<td>' . $x['name'] . '</td>';
+				echo '<td>' . $x['width'] . '</td>';
+				echo '<td>' . $x['height'] . '</td>';
+				echo "</tr>";
+				echo '</tbody>';
+			}
 		}
 		else
 		{
