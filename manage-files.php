@@ -33,13 +33,6 @@ sec_session_start();
 
 				<div id="menu-content">
 					<table id="filetable">
-						<thead>
-							<tr class="theadline">
-								<th>Name</th>
-								<th>Width</th>
-								<th>Height</th>
-							</tr>
-						</thead>
 						<?php
 							include_once 'includes/load_saves.php';
 						?>

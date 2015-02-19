@@ -17,22 +17,42 @@
 
 		print_r(error_get_last());
 
+		echo '<thead>'. 
+					'<tr class="theader" >' .
+						'<th colspan="10">Savefiles</th>' .
+					'</tr>' .
+				'</thead>';
+
 		if(!empty($savedb)) {
 			//Code for table on page!
+
+			echo '<thead>'. 
+					'<tr class="theadline">' .
+						'<th>Name</th>' .
+						'<th>Width</th>' .
+						'<th>Height</th>' .
+						'<th>Play</th>' .
+					'</tr>' .
+				'</thead>';
+
 			foreach ($savedb as $key => $x) {
 				echo '<tbody>';
 				echo '<tr class="saves">';
 				echo '<td>' . $x['name'] . '</td>';
 				echo '<td>' . $x['width'] . '</td>';
 				echo '<td>' . $x['height'] . '</td>';
+				echo '<td><a href="#">Play</a></td>';
 				echo "</tr>";
 				echo '</tbody>';
 			}
 		}
 		else
 		{
-			echo '<p>if savedb failed</p>';
-			print_r(error_get_last());
+			echo '<tbody>'. 
+					'<tr class="nofiles">' .
+						'<td colspan="10">You dont have any saved games</td>' .
+					'</tr>' .
+				'</tbody>';
 		}
 
 	}
@@ -52,21 +72,41 @@
 			$i++;
 		}
 
+		echo '<thead>'. 
+					'<tr class="theader">' .
+						'<th colspan="10">Templates</th>' .
+					'</tr>' .
+				'</thead>';
+
 		if(!empty($tempdb)) {
+
+			echo '<thead>'. 
+					'<tr class="theadline">' .
+						'<th>Name</th>' .
+						'<th>Width</th>' .
+						'<th>Height</th>' .
+						'<th>Play</th>' .
+					'</tr>' .
+				'</thead>';
+
 			foreach ($tempdb as $key => $x) {
 				echo '<tbody>';
 				echo '<tr class="saves">';
 				echo '<td>' . $x['name'] . '</td>';
 				echo '<td>' . $x['width'] . '</td>';
 				echo '<td>' . $x['height'] . '</td>';
+				echo '<td><a href="#">Play</a></td>';
 				echo "</tr>";
 				echo '</tbody>';
 			}
 		}
 		else
 		{
-			echo '<p>If tempdb failed</p>';
-			print_r(error_get_last());
+			echo '<tbody>'. 
+					'<tr class="nofiles">' .
+						'<td colspan="10">You dont have any templates</td>' .
+					'</tr>' .
+				'</tbody>';
 		}
 	}
 	else
