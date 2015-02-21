@@ -11,6 +11,8 @@ $(document).ready(function() {
 	generate_lists();
 	var point = 0;
 	clickbtn();
+	console.log(game);
+	alert(game['name']);
 
 });
 

@@ -41,7 +41,7 @@
 				echo '<td>' . $x['name'] . '</td>';
 				echo '<td>' . $x['width'] . '</td>';
 				echo '<td>' . $x['height'] . '</td>';
-				echo '<td><a href="#">Play</a></td>';
+				echo '<td><a href="includes/process_play.php?name=' . htmlentities($x['name']) . '&type=save">Play</a></td>';
 				echo "</tr>";
 				echo '</tbody>';
 			}
@@ -95,7 +95,7 @@
 				echo '<td>' . $x['name'] . '</td>';
 				echo '<td>' . $x['width'] . '</td>';
 				echo '<td>' . $x['height'] . '</td>';
-				echo '<td><a href="#">Play</a></td>';
+				echo '<td><a href="includes/process_play.php?name=' . htmlentities($x['name']) . '&type=template">Play</a></td>';
 				echo "</tr>";
 				echo '</tbody>';
 			}
