@@ -5,20 +5,22 @@
 		include_once 'includes/functions.php';
 
 		sec_session_start();
-
-
-		print_r(error_get_last());
-		print_r($_SESSION['user_id']);
-		print_r($_SESSION['game_name']);
-		print_r($_SESSION['game_type']);
-		print_r('no session?');
-
+		
 		if(isset($_SESSION['user_id']) && isset($_SESSION['game_name']) && isset($_SESSION['game_type'])) {
 			$user_id = $_SESSION['user_id'];
 			$name = $_SESSION['game_name'];
 			$type = $_SESSION['game_type'];
+			unset($_SESSION['game_name']);
+			unset($_SESSION['game_type']);
 
-			$querystr = "SELECT * FROM '$type' WHERE user_id='$user_id' AND name='$name' LIMIT 1";
+		if($type === 'template') {
+			$querystr = "SELECT name, width, height, subjects, questions FROM template WHERE user_id='$user_id' AND name='$name'";
+		}	
+		elseif ($type === 'save') {
+			$querystr = "SELECT name, width, height, subjects, questions, teams, active FROM save WHERE user_id='$user_id' AND name='$name' LIMIT 1";
+		}
+
+
 			print_r(error_get_last());
 			$game = array();
 
@@ -37,24 +39,20 @@
 				}
 
 				if(!empty($game)) {
-					$gamefile = json_encode($game, JSON_PRETTY_PRINT);
+					$gamefile = json_encode($game);
 				}
 				else
 				{
 					$gamefile = '';
-					print_r('error 2');
 				}
 			}
 			else
 			{
 				$gamefile = '';
-				print_r('error 1');
 			}
 		}
 		else{
 			$gamefile = '';
-			print_r('error');
-			print_r(error_get_last());
 		}
 	
 
@@ -211,7 +209,10 @@
 		<script type="text/javascript" src="js/bootstrap.js"></script>
 		<script type="text/javascript" src="js/FileSaver.js"></script>
 		<script type="text/javascript" src="js/functions.js"></script>
-		<script type="text/javascript"> var game = '<?php echo $gamefile; ?>';</script>
+		<script> 
+			var game = <?php echo $gamefile; ?>;
+			var game_type = <?php echo $game_type; ?>;
+		</script>
 		<script type="text/javascript" src="js/app.js"></script>
 	</body> 
 </html>

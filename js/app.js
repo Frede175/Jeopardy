@@ -11,8 +11,10 @@ $(document).ready(function() {
 	generate_lists();
 	var point = 0;
 	clickbtn();
-	console.log(game);
-	alert(game['name']);
+	if(0 < game.length) {
+		alert(game['name']);
+		
+	}
 
 });
 
