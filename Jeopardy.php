@@ -17,7 +17,7 @@
 			$querystr = "SELECT name, width, height, subjects, questions FROM template WHERE user_id='$user_id' AND name='$name'";
 		}	
 		elseif ($type === 'save') {
-			$querystr = "SELECT name, width, height, subjects, questions, teams, active FROM save WHERE user_id='$user_id' AND name='$name' LIMIT 1";
+			$querystr = "SELECT name, width, height, subjects, questions, teams, numteams, activeteam, active FROM save WHERE user_id='$user_id' AND name='$name' LIMIT 1";
 		}
 
 
@@ -35,10 +35,13 @@
 				if($type === 'save') {
 					$game['teams'] = $row['teams'];
 					$game['active'] = $row['active'];
+					$game['numteams'] = $row['numteams'];
+					$game['activeteam'] = $row['activeteam'];
 					print_r(error_get_last());
 				}
 
 				if(!empty($game)) {
+					$game['type'] = $type;
 					$gamefile = json_encode($game);
 				}
 				else

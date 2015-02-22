@@ -12,7 +12,7 @@ $(document).ready(function() {
 	var point = 0;
 	clickbtn();
 	if(0 < game.length) {
-		alert(game['name']);
+		LoadStateDatabase(game);
 		
 	}
 
@@ -263,7 +263,7 @@ function points(state) {
 	
 }
 
-function loadState(fileData, team, team_names){
+function loadStateFile(fileData, team, team_names){
 
 	//Clear tables
 	$('#teams_tr').text('');
@@ -347,4 +347,33 @@ function loadState(fileData, team, team_names){
 	}
 
 	clickbtn();
+}
+
+
+function LoadStateDatabase (game) {
+	var team_names_var
+
+	//Clear tables
+	$('#teams_tr').text('');
+	$('#main_table').text('');
+
+	$('#title').text(game['name']);
+	Width = game['width'];
+	Height = game['height'];
+	countdown = 60;
+
+	if(game['type'] === 'save') {
+		teamnumber = game['numteams'];
+		activeTeam = game['activeteam'];
+	}
+	else
+	{
+		showPopup(6);
+		function LoadStateDatebaseVar (team, team_names) {
+			teamnumber = team;
+			team_names_var = team_names;
+		}
+	}
+
+
 }

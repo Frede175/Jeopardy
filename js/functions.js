@@ -164,7 +164,13 @@ function clickmenu() {
 		for(var i = 0; i < team; i++){
 			team_names.push($('#team-input-' + i).val());
 		}
-		loadState(readerResult, team, team_names);
+		if(game != '') {
+			loadStateDatebaseVar(team, team_names);
+		}
+		else
+		{
+			loadStateFile(readerResult, team, team_names);
+		}
 	});
 
 	$('#load-game').unbind().click(function(event) {
@@ -272,7 +278,7 @@ function setWidth(winW, x) {
 function checkteams(data) {
 	var data_split = data.split(";");
 	if(data_split[1] > 0){
-		return;
+		loadStateFile(readerResult);
 	}
 	else
 	{
