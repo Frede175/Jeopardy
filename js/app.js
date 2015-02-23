@@ -12,8 +12,14 @@ $(document).ready(function() {
 	var point = 0;
 	clickbtn();
 	if(0 < game.length) {
-		LoadStateDatabase(game);
-		
+		if(game_type === 'template') {
+			showPopup(6);
+		}
+		else
+		{
+			LoadStateDatabase(game);
+		}
+
 	}
 
 });
@@ -285,6 +291,7 @@ function loadStateFile(fileData, team, team_names){
 		var readNumber = 4;
 		teamnumber = team;
 		countdown = 60;
+		activeteam = 0;
 	}
 
 	var h = window.innerHeight;
@@ -350,30 +357,35 @@ function loadStateFile(fileData, team, team_names){
 }
 
 
-function LoadStateDatabase (game) {
-	var team_names_var
+function LoadStateDatabase (game, team, team_names) {
 
 	//Clear tables
 	$('#teams_tr').text('');
 	$('#main_table').text('');
 
 	$('#title').text(game['name']);
-	Width = game['width'];
-	Height = game['height'];
+	Width = parseInt(game['width']);
+	Height = parseInt(game['height']);
 	countdown = 60;
 
-	if(game['type'] === 'save') {
-		teamnumber = game['numteams'];
-		activeTeam = game['activeteam'];
+	if(game_type === 'save') {
+		teamnumber = parseInt(game['numteams']);
+		activeTeam = parseInt(game['activeteam']);
 	}
 	else
 	{
-		showPopup(6);
-		function LoadStateDatebaseVar (team, team_names) {
-			teamnumber = team;
-			team_names_var = team_names;
-		}
+		teamnumber = team;
+		activeteam = 0;
 	}
+
+	var h = window.innerHeight;
+	var w = window.innerWidth;
+
+	makeScorer(); table(w, h, Width, Height); Questions(); //Generate the table
+
+	var main_separator = ';';
+	var second_separator = ':';
+	
 
 
 }

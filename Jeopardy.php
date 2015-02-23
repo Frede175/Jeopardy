@@ -41,7 +41,6 @@
 				}
 
 				if(!empty($game)) {
-					$game['type'] = $type;
 					$gamefile = json_encode($game);
 				}
 				else
