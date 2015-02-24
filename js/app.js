@@ -132,7 +132,7 @@ function Questions() {
 	for(var i = 0; i < Width; i++){
 		questions_array[i] = new Array(Height);
 		for (var x = 0; x < Height; x++) {
-			questions_array[i][x] = "Questions for button " + (i+1) + " " + (x+1) + ":" + "Answer for button " + (i+1) + " " + (x+1)
+			questions_array[i][x] = "Questions for button " + (i+1) + " " + (x+1) + "75-SEC-11" + "Answer for button " + (i+1) + " " + (x+1)
 		};
 	}
 }
@@ -187,7 +187,7 @@ function display_questions(btn_id){
 	//loading Questions
 	var btn_id_split = btn_id.split("_"); var btn_Width = btn_id_split[1]-1; var btn_Height = btn_id_split[2]-1;
 
-	var questions_array_split = questions_array[btn_Width][btn_Height].split(":");
+	var questions_array_split = questions_array[btn_Width][btn_Height].split("75-SEC-11");
 
 	console.log(questions_array_split[0]);
 	console.log(questions_array_split[1]);
@@ -275,7 +275,7 @@ function loadStateFile(fileData, team, team_names){
 	$('#teams_tr').text('');
 	$('#main_table').text('');
 
-	var fileData_split = fileData.split(";");
+	var fileData_split = fileData.split("02-MAIN-35");
 	$('#newGame').remove();
 	
 	$('#title').text(fileData_split[0]);
@@ -297,12 +297,12 @@ function loadStateFile(fileData, team, team_names){
 	var h = window.innerHeight;
 	var w = window.innerWidth;
 
-	makeScorer(); table(w, h, Width, Height); Questions(); //Generate the table
+	makeScorer(); table(w, h, Height, Width); Questions(); //Generate the table
 
-	if(parseInt(fileData_split[1] == 0)){
+	if(parseInt(fileData_split[1]) > 0){
 		//Teams name and points
 		for(var i = 0; i < teamnumber; i++){
-			var fileData_split_split = fileData_split[readNumber].split(":");
+			var fileData_split_split = fileData_split[readNumber].split("75-SEC-11");
 			var id = i+1;
 			$('#team_' + id).text(fileData_split_split[0]);
 			TEAMPOINT[i] = parseInt(fileData_split_split[1]);
@@ -325,11 +325,11 @@ function loadStateFile(fileData, team, team_names){
 		readNumber++;
 	}
 
-	if(parseInt(fileData_split[1] == 0)){
+	if(parseInt(fileData_split[1] ) > 0){
 		//Button stats
 		for(var i = 0; i < Width; i++){
 			for(var j =0; j < Height; j++){
-				var fileData_split_split = fileData_split[readNumber].split(":");
+				var fileData_split_split = fileData_split[readNumber].split("75-SEC-11");
 				console.log(fileData_split_split[0] + ", " + fileData_split_split[1]);
 				var id = i + '_' + j;
 				if(fileData_split_split[1] == "true"){
@@ -383,8 +383,8 @@ function LoadStateDatabase (game, team, team_names) {
 
 	makeScorer(); table(w, h, Width, Height); Questions(); //Generate the table
 
-	var main_separator = ';';
-	var second_separator = ':';
+	var main_separator = '02-MAIN-35';
+	var second_separator = '75-SEC-11';
 	
 
 

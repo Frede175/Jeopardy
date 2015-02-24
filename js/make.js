@@ -179,7 +179,7 @@ function create_array() {
 
 function display_question() {
 	var idSplit = activeId_btn.split("_");
-	var questions_array_split = questions_array[idSplit[1]-1][idSplit[2]-1].split(":");
+	var questions_array_split = questions_array[idSplit[1]-1][idSplit[2]-1].split("75-SEC-11");
 
 	$('#input-question').val(questions_array_split[0]);
 	$('#input-answer').val(questions_array_split[1]);
@@ -221,7 +221,7 @@ function update_array(input) {
 
 function update_questions_array_button() {
 	var idSplit = activeId_btn.split("_");
-	questions_array[idSplit[1]-1][idSplit[2]-1] = $('#input-question').val() + ":" + $('#input-answer').val();
+	questions_array[idSplit[1]-1][idSplit[2]-1] = $('#input-question').val() + "75-SEC-11" + $('#input-answer').val();
 }
 
 function update_state() {

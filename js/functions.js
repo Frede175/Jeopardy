@@ -56,12 +56,12 @@ function save(save_state, Width, Height, questions_array, teamnumber, activeTeam
 		var btn_id_save = [];
 
 			$('.btnQ').each(function() {
-				btn_id_save.push(this.id + ":" + this.disabled);
+				btn_id_save.push(this.id + "75-SEC-11" + this.disabled);
 			});
 	}
 	//Make file with data:
 	var saveData;
-	var separator = ";"
+	var separator = "02-MAIN-35";
 
 	//title
 	saveData = $('#title').text() + separator;
@@ -79,8 +79,8 @@ function save(save_state, Width, Height, questions_array, teamnumber, activeTeam
 		saveData += countdown + separator + activeTeam + separator;
 		for(var i = 0; i < teamnumber; i++){
 			var id = i+1;
-			saveData += $('#TEAM_' + id).text()
-			+ ":"
+			saveData += $('#team_' + id).text()
+			+ "75-SEC-11"
 			+ TEAMPOINT[i] 
 			+ separator;
 		}
@@ -199,8 +199,8 @@ function clickmenu() {
 			var reader = new FileReader();
 
 			reader.onload = function(e) {
-				checkteams(reader.result)
 				readerResult = reader.result;
+				checkteams(reader.result)
 				clickmenu();
 				clickbtn();
 			}
@@ -276,7 +276,7 @@ function setWidth(winW, x) {
 }
 
 function checkteams(data) {
-	var data_split = data.split(";");
+	var data_split = data.split("02-MAIN-35");
 	if(data_split[1] > 0){
 		loadStateFile(readerResult);
 	}
