@@ -142,7 +142,7 @@ function clickmenu() {
 
 		console.log(teamnumber + " " + Width + " " + Height); 
 
-		makeScorer(); table(w, h, Width, Height); Questions(); //Generate the table
+		makeScorer(); table(w, h, Height, Width); Questions(); //Generate the table
 		clickbtn();
 	});
 
