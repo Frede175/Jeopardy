@@ -112,6 +112,10 @@ function save(save_state, Width, Height, questions_array, teamnumber, activeTeam
 	saveData = "SaveFile;";
 }
 
+function saveDatabase() {
+	
+}
+
 function clickmenu() {
 	
 	$('#new-game').unbind().click(function(event) {
