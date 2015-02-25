@@ -112,8 +112,74 @@ function save(save_state, Width, Height, questions_array, teamnumber, activeTeam
 	saveData = "SaveFile;";
 }
 
-function saveDatabase() {
+function saveDatabase(state, Width, Height, questions_array, teamnumber, activeTeam, TEAMPOINT) {
+	var dataArray = [];
+	var main_separator = "02-MAIN-35";
+	var sec_separator = "75-SEC-11";
+
+	dataArray['state'] = state;
+	dataArray['title'] = $('#title').text();
+	dataArray['width'] = Width;
+	dataArray['height'] = Height;
+
+	for(var i = 0; i < Width; i++) {
+		var id = i+1;
+		dataArray['subjects'] +=  $('#subject_' + id).test() + separator;
+	}
+
+	for(var i = 0; i < Width; i++) {
+		for(var j = 0; j < Height; j++) {
+			dataArray['questions'] += questions_array[i][j] + separator;
+		}
+	}
+
+	if(save_state == 1){
+
+
+		for(var i = 0; i < teamnumber; i++) {
+			var id = i+1;
+			dataArray['teams'] += 
+				$('#team_' + id).text() +
+				sec_separator +
+				TEAMPOINT[i] +
+				separator;
+		}
+
+		dataArray['numteams'] = teamnumber;
+
+		dataArray['activeTeam'] = activeTeam;
+
+
+		var btn_id_save = [];
+
+			$('.btnQ').each(function() {
+				btn_id_save.push(this.id + "75-SEC-11" + this.disabled);
+			});
+
+		for(var i = 0; i < btn_id_save.length; i++) {
+			dataArray['active'] += btn_id_save[i] + separator;
+		}
+	}
+
+	var rdyDataArray = JSON.stringify(dateArray);
+
+	$.$.ajax({
+		url: '../includes/save_to_database.php',
+		type: 'POST',
+		data: {data: rdyDataArray},
+	})
+	.done(function() {
+		alert("success");
+	})
+	.fail(function() {
+		alert("error");
+	})
+	.always(function() {
+		alert("complete");
+	});
 	
+
+
 }
 
 function clickmenu() {
