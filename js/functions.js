@@ -102,8 +102,8 @@ function save(save_state, Width, Height, questions_array, teamnumber, activeTeam
 	for (var i = 0; i < Width; i++) {
 		for (var x = 0; x < Height; x++) {
 			saveData += questions_array[i][x] + separator;
-		};
-	};
+		}
+	}
 
 	var blobObject = new Blob([saveData]); 
 	
@@ -113,7 +113,7 @@ function save(save_state, Width, Height, questions_array, teamnumber, activeTeam
 }
 
 function saveDatabase(state, Width, Height, questions_array, teamnumber, activeTeam, TEAMPOINT) {
-	var dataArray = [];
+	var dataArray = {};
 	var main_separator = "02-MAIN-35";
 	var sec_separator = "75-SEC-11";
 
@@ -121,6 +121,11 @@ function saveDatabase(state, Width, Height, questions_array, teamnumber, activeT
 	dataArray['title'] = $('#title').text();
 	dataArray['width'] = Width;
 	dataArray['height'] = Height;
+	dataArray['subjects'] = '';
+	dataArray['questions'] = '';
+	dataArray['teams'] = '';
+	dataArray['active'] = '';
+
 
 	for(var i = 0; i < Width; i++) {
 		var id = i+1;
@@ -161,12 +166,17 @@ function saveDatabase(state, Width, Height, questions_array, teamnumber, activeT
 		}
 	}
 
+	console.log(dataArray);
+
 	var rdyDataArray = JSON.stringify(dataArray);
+
+	console.log(rdyDataArray);
 
 	$.ajax({
 		url: '../includes/save_to_database.php',
 		type: 'POST',
-		data: rdyDataArray,
+		dataType: 'html',
+		data: {data: dataArray}
 	})
 	.done(function() {
 		alert("success");

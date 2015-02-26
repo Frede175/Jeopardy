@@ -4,14 +4,14 @@
 
 	sec_session_start();
 
-	if(check_login($mysqli) == true) {
+	if(login_check($mysqli) == true) {
 
 		if(isset($_SESSION['user_id']) && isset($_POST['data'])) {
 			$jsString = mysqli_escape_string($mysqli, json_decode(stripslashes($_POST['data'])));
-			$dataArray = [];
+			$dataArray = array();
 			//A Test!!!!
 			foreach($jsString as $d) {
-				echo '<p>' . $d . '</p>';
+				print_r('<p>' . $d . '</p>');
 			}
 
 			//Real stoff
