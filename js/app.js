@@ -68,7 +68,7 @@ function clickbtn() {
 	//Menu save:
 	$('#save-game').unbind().click(function(event) {
 		$("#div-menu").hide("slow");
-		save(1, Width, Height, questions_array, teamnumber, activeTeam, TEAMPOINT);
+		saveDatabase(1, Width, Height, questions_array, teamnumber, activeTeam, TEAMPOINT);
 	});
 
 }

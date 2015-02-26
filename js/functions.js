@@ -124,16 +124,16 @@ function saveDatabase(state, Width, Height, questions_array, teamnumber, activeT
 
 	for(var i = 0; i < Width; i++) {
 		var id = i+1;
-		dataArray['subjects'] +=  $('#subject_' + id).test() + separator;
+		dataArray['subjects'] +=  $('#subject_' + id).text() + main_separator;
 	}
 
 	for(var i = 0; i < Width; i++) {
 		for(var j = 0; j < Height; j++) {
-			dataArray['questions'] += questions_array[i][j] + separator;
+			dataArray['questions'] += questions_array[i][j] + main_separator;
 		}
 	}
 
-	if(save_state == 1){
+	if(state == 1){
 
 
 		for(var i = 0; i < teamnumber; i++) {
@@ -142,7 +142,7 @@ function saveDatabase(state, Width, Height, questions_array, teamnumber, activeT
 				$('#team_' + id).text() +
 				sec_separator +
 				TEAMPOINT[i] +
-				separator;
+				main_separator;
 		}
 
 		dataArray['numteams'] = teamnumber;
@@ -157,16 +157,16 @@ function saveDatabase(state, Width, Height, questions_array, teamnumber, activeT
 			});
 
 		for(var i = 0; i < btn_id_save.length; i++) {
-			dataArray['active'] += btn_id_save[i] + separator;
+			dataArray['active'] += btn_id_save[i] + main_separator;
 		}
 	}
 
-	var rdyDataArray = JSON.stringify(dateArray);
+	var rdyDataArray = JSON.stringify(dataArray);
 
-	$.$.ajax({
+	$.ajax({
 		url: '../includes/save_to_database.php',
 		type: 'POST',
-		data: {data: rdyDataArray},
+		data: rdyDataArray,
 	})
 	.done(function() {
 		alert("success");
