@@ -168,18 +168,17 @@ function saveDatabase(state, Width, Height, questions_array, teamnumber, activeT
 
 	console.log(dataArray);
 
-	var rdyDataArray = JSON.stringify(dataArray);
-
-	console.log(rdyDataArray);
+	console.log(dataArray);
 
 	$.ajax({
 		url: '../includes/save_to_database.php',
 		type: 'POST',
-		dataType: 'html',
+		dataType: 'JSON',
 		data: {data: dataArray}
 	})
-	.done(function() {
+	.done(function( data ) {
 		alert("success");
+		console.log(data);
 	})
 	.fail(function() {
 		alert("error");
