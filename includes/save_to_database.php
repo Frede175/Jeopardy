@@ -9,7 +9,43 @@
 
 			$dataArray = mysqli_escape_string($mysqli, $_POST['data']);
 
+			$title = $dataArray['title'];
+			$user_id = $_SESSION['user_id'];
+
 			
+			$prestmt = "SELECT * FROM save WHERE title = ? AND user_id = ?";
+
+			if ($stmt = $mysqli->prepare($prestmt)) {
+				$stmt->bind_param('si', $title, $user_id);
+				$stmt->execute();
+				
+				if($stmt->num_rows <= 0) {
+
+					$name = $dataArray['name'];
+					$width = $dataArray['width'];
+					$height = $dataArray['height'];
+					$subjects = $dataArray['subjects'];
+					$questions = $dataArray['questions'];
+					$teams = $dataArray['teams'];
+					$active = $dataArray['active'];
+					$numteams = $dataArray['numteams'];
+					$activeTeam = $dataArray['activeTeam'];
+					$now = date("Y-m-d");
+
+					$insert = "INSERT INTO save (user_id, name, width, height, subjects, questions, teams, active, numteams, activeTeam, data) VALUES ('$user_id', '$name', '$width', '$height', '$subjects', '$questions', '$teams', '$active', '$numteams', '$activeTeam', '$now'";
+					if($mysqli->query($insert)) {
+						echo "The game have been saved with the title of: " . $title;
+					}
+					else
+					{
+						echo "The game failed to save!";
+					}
+				}
+				else
+				{
+					echo "There is allready a saved game with that name!";
+				}
+			}
 
 			echo json_encode($jsString['title']);
 		}

@@ -8,18 +8,21 @@
 
 
 		if(login_check($mysqli) == true) {
+
+			$gamefile = '';
+			$game_type = '';
 		
 			if(isset($_SESSION['user_id']) && isset($_SESSION['game_name']) && isset($_SESSION['game_type'])) {
 				$user_id = $_SESSION['user_id'];
 				$name = $_SESSION['game_name'];
-				$type = $_SESSION['game_type'];
+				$game_type = $_SESSION['game_type'];
 				unset($_SESSION['game_name']);
 				unset($_SESSION['game_type']);
 
-			if($type === 'template') {
+			if($game_type === 'template') {
 				$querystr = "SELECT name, width, height, subjects, questions FROM template WHERE user_id='$user_id' AND name='$name'";
 			}	
-			elseif ($type === 'save') {
+			elseif ($game_type === 'save') {
 				$querystr = "SELECT name, width, height, subjects, questions, teams, numteams, activeteam, active FROM save WHERE user_id='$user_id' AND name='$name' LIMIT 1";
 			}
 
