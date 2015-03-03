@@ -13,14 +13,20 @@
 			$user_id = $_SESSION['user_id'];
 
 			
-			$prestmt = "SELECT * FROM save WHERE title = ? AND user_id = ?";
+			$prestmt = "SELECT user_id FROM save WHERE title = ? AND user_id = ? LIMIT 1";
 
-			if ($stmt = $mysqli->prepare($prestmt)) {
-				$stmt->bind_param('si', $title, $user_id);
-				$stmt->execute();
-				
-				if($stmt->num_rows <= 0) {
+			$stmt = $mysqli->prepare($prestmt);
 
+			if ($stmt) {
+        		$stmt->bind_param('si', $title, $user_id);
+        		$stmt->execute();
+        		$stmt->store_result();
+ 
+        		if ($stmt->num_rows == 1) {
+           			echo json_encode("A game with that title allready exists"); 
+       			}
+       			else
+       			{
 					$name = $dataArray['name'];
 					$width = $dataArray['width'];
 					$height = $dataArray['height'];
@@ -34,20 +40,27 @@
 
 					$insert = "INSERT INTO save (user_id, name, width, height, subjects, questions, teams, active, numteams, activeTeam, data) VALUES ('$user_id', '$name', '$width', '$height', '$subjects', '$questions', '$teams', '$active', '$numteams', '$activeTeam', '$now'";
 					if($mysqli->query($insert)) {
-						echo "The game have been saved with the title of: " . $title;
+						echo json_encode("The game have been saved with the title of: " . $title);
 					}
 					else
 					{
-						echo "The game failed to save!";
+						echo json_encode("The game failed to save!");
 					}
 				}
-				else
-				{
-					echo "There is allready a saved game with that name!";
-				}
 			}
-
-			echo json_encode($jsString['title']);
+			else 
+			{
+				$error = "stmt failed" . error_get_last() . mysqli_stmt_error($stmt);
+				echo json_encode($error);
+			}
 		}
+		else
+		{
+			echo "isset failed!";
+		}
+	}
+	else
+	{
+		echo "Not logged in!";
 	}
 ?>
