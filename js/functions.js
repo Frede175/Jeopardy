@@ -170,6 +170,8 @@ function saveDatabase(state, Width, Height, questions_array, teamnumber, activeT
 
 	console.log(dataArray);
 
+	var returndata;
+
 	$.ajax({
 		url: '../includes/save_to_database.php',
 		type: 'POST',
@@ -177,14 +179,13 @@ function saveDatabase(state, Width, Height, questions_array, teamnumber, activeT
 		data: {data: dataArray}
 	})
 	.done(function( data ) {
-		alert("success");
-		console.log(data);
+		returndata = data;
 	})
 	.fail(function() {
 		alert("error");
 	})
 	.always(function() {
-		alert("complete");
+		alert("Complete: " + returndata);
 	});
 	
 

@@ -11,6 +11,7 @@
 
 			$title = escapeVar($dataArray['title']);
 			$user_id = $_SESSION['user_id'];
+			$state = escapeVar($dataArray['state']);
 
 			
 			$prestmt = "SELECT user_id FROM save WHERE (name = ?) AND (user_id = ?) LIMIT 1";
@@ -32,15 +33,28 @@
 					$height = $dataArray['height'];
 					$subjects = $dataArray['subjects'];
 					$questions = $dataArray['questions'];
-					$teams = $dataArray['teams'];
-					$active = $dataArray['active'];
-					$numteams = $dataArray['numteams'];
-					$activeTeam = $dataArray['activeTeam'];
 					$now = date("Y-m-d");
 
-					$insert = "INSERT INTO `save` (`user_id`, `name`, `width`, `height`, `subjects`, `questions`, `teams`, `active`, `numteams`, `activeteam`, `date`) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+					//Checking if it's a template save or game save!
+					if($state == 1) {
+						$teams = $dataArray['teams'];
+						$active = $dataArray['active'];
+						$numteams = $dataArray['numteams'];
+						$activeTeam = $dataArray['activeTeam'];
+						$insert = "INSERT INTO `save` (`user_id`, `name`, `width`, `height`, `subjects`, `questions`, `teams`, `active`, `numteams`, `activeteam`, `date`) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+					}
+					elseif ($state == 0) {
+						$insert = "INSERT INTO `template` (`user_id`, `name`, `width`, `height`, `subjects`, `questions`, `date`) VALUES (?,?,?,?,?,?,?)";
+					}
+
+					
 					if($insert_stmt = $mysqli->prepare($insert)) {
-						$insert_stmt->bind_param("isiissssiis", $user_id, $name, $width, $height, $subjects, $questions, $teams, $active, $numteams, $activeTeam, $now);
+						if($state == 1) {
+							$insert_stmt->bind_param("isiissssiis", $user_id, $name, $width, $height, $subjects, $questions, $teams, $active, $numteams, $activeTeam, $now);
+						}
+						elseif ($state == 0) {
+							$insert_stmt->bind_param("isiisss", $user_id, $name, $width, $height, $subjects, $questions, $now);
+						}
 
 						if($insert_stmt->execute()) {
 							echo json_encode("The game have been saved with the title of: " . $title);
