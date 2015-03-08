@@ -1,9 +1,3 @@
-<?php
-	include_once '../includes/db_connect.php';
-	include_once '../includes/functions.php';
-?>
-
-
 <div id="header">
 	<div id="nav">
 		<ul>

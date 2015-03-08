@@ -11,11 +11,11 @@ $(document).ready(function() {
 	generate_lists();
 	var point = 0;
 	clickbtn();
-	if(0 < game.length) {
+	if(game['true'] != false) {
 		if(game_type === 'template') {
 			showPopup(6);
 		}
-		else
+		else if(game_type == 'save')
 		{
 			LoadStateDatabase(game);
 		}
@@ -315,7 +315,7 @@ function loadStateFile(fileData, team, team_names){
 		for (var i = 0; i < teamnumber; i++) {
 			var id = i+1;
 			$('#team_' + id).text(team_names[i]);
-		};
+		}
 	}
 
 	//Subjects name
@@ -363,12 +363,13 @@ function LoadStateDatabase (game, team, team_names) {
 	$('#teams_tr').text('');
 	$('#main_table').text('');
 
+	//setting varibales
 	$('#title').text(game['name']);
 	Width = parseInt(game['width']);
 	Height = parseInt(game['height']);
 	countdown = 60;
 
-	if(game_type === 'save') {
+	if(game_type == 'save') {
 		teamnumber = parseInt(game['numteams']);
 		activeTeam = parseInt(game['activeteam']);
 	}
@@ -381,11 +382,66 @@ function LoadStateDatabase (game, team, team_names) {
 	var h = window.innerHeight;
 	var w = window.innerWidth;
 
+	console.log(Width + " " + Height);
+
 	makeScorer(); table(w, h, Width, Height); Questions(); //Generate the table
 
 	var main_separator = '02-MAIN-35';
 	var second_separator = '75-SEC-11';
 	
+	//Loading teams and points
+	if(game_type == 'save') {
+		var teams_split = game['teams'].split(main_separator);
+		for(var i = 0; i < teamnumber; i++) {
+			var teams_split_sec = teams_split.split(second_separator);
+			$('#team_' + id).text(teams_split_sec[0]);
+			TEAMPOINT[i] = parseInt(teams_split_sec[1]);
+			$('#teamspoint_' + id).text(teams_split_sec[1]);
+		}
+	}
+	else
+	{
+		for (var i = 0; i < teamnumber; i++) {
+			var id = i+1;
+			$('#team_' + id).text(team_names[i]);
+		}
+	}
 
+	//Loading subjects name
+	var subject_split = game['subjects'].split(main_separator);
+	for(var i = 0; i < Width; i++) {
+		var id = i+1;
+		$('#subject_' + id).text(subject_split[i]);
+	}
+
+	//Loading buttons stats (actvie)
+	if(game_type == 'save') {
+		var button_split = game['actvie'].split(main_separator);
+		for(var i = 0; i < Width; i++) {
+			for(var j = 0; j < Height; j++) {
+				var button_split_sec = button_split.split(second_separator);
+				if(button_split_sec[1] == "true") {
+					document.getElementById(button_split_sec[0]).disabled = true;
+					$('#' + button_split_sec[0]).removeClass('btnQ_enable');
+				}
+				else
+				{
+					document.getElementById(button_split_sec[0]).disabled = false;
+				}
+			}
+		}
+	}
+
+	//Loading questions and answers
+	var questions_split = game['questions'].split(main_separator);
+	var questions_num = 0;
+	for(var i = 0; i < Width; i++) {
+		for(var j = 0; j < Height; j++) {
+			questions_array[i][j] = questions_split[questions_num];
+			questions_num++;
+		}
+	}
+
+	clickbtn();
 
 }

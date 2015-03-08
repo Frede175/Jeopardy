@@ -244,8 +244,8 @@ function clickmenu() {
 		for(var i = 0; i < team; i++){
 			team_names.push($('#team-input-' + i).val());
 		}
-		if(game != '') {
-			loadStateDatebaseVar(team, team_names);
+		if(game['true'] != false) {
+			LoadStateDatabase(game, team, team_names);
 		}
 		else
 		{
