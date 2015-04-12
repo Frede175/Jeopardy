@@ -393,7 +393,8 @@ function LoadStateDatabase (game, team, team_names) {
 	if(game_type == 'save') {
 		var teams_split = game['teams'].split(main_separator);
 		for(var i = 0; i < teamnumber; i++) {
-			var teams_split_sec = teams_split.split(second_separator);
+			var id = i+1;
+			var teams_split_sec = teams_split[i].split(second_separator);
 			$('#team_' + id).text(teams_split_sec[0]);
 			TEAMPOINT[i] = parseInt(teams_split_sec[1]);
 			$('#teamspoint_' + id).text(teams_split_sec[1]);
@@ -416,10 +417,10 @@ function LoadStateDatabase (game, team, team_names) {
 
 	//Loading buttons stats (actvie)
 	if(game_type == 'save') {
-		var button_split = game['actvie'].split(main_separator);
+		var button_split = game['active'].split(main_separator);
 		for(var i = 0; i < Width; i++) {
 			for(var j = 0; j < Height; j++) {
-				var button_split_sec = button_split.split(second_separator);
+				var button_split_sec = button_split[i].split(second_separator);
 				if(button_split_sec[1] == "true") {
 					document.getElementById(button_split_sec[0]).disabled = true;
 					$('#' + button_split_sec[0]).removeClass('btnQ_enable');

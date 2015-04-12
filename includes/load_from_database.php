@@ -19,12 +19,12 @@
 				unset($_SESSION['game_name']);
 				unset($_SESSION['game_type']);
 
-			if($game_type === 'template') {
-				$querystr = "SELECT name, width, height, subjects, questions FROM template WHERE user_id='$user_id' AND name='$name'";
-			}	
-			elseif ($game_type === 'save') {
-				$querystr = "SELECT name, width, height, subjects, questions, teams, numteams, activeteam, active FROM save WHERE user_id='$user_id' AND name='$name' LIMIT 1";
-			}
+				if($game_type === 'template') {
+					$querystr = "SELECT name, width, height, subjects, questions FROM template WHERE user_id='$user_id' AND name='$name'";
+				}	
+				elseif ($game_type === 'save') {
+					$querystr = "SELECT name, width, height, subjects, questions, teams, numteams, activeteam, active FROM save WHERE user_id='$user_id' AND name='$name' LIMIT 1";
+				}
 
 
 				print_r(error_get_last());
@@ -38,7 +38,7 @@
 					$game['subjects'] = $row['subjects'];
 					$game['questions'] = $row['questions'];
 					print_r(error_get_last());
-					if($type === 'save') {
+					if($game_type === 'save') {
 						$game['teams'] = $row['teams'];
 						$game['active'] = $row['active'];
 						$game['numteams'] = $row['numteams'];
@@ -52,26 +52,28 @@
 					}
 					else
 					{
-						$gamefile = '{"true":"false"}';
-		 				$game_type = 'type';
+						loadFail();
 					}
 				}
 				else
 				{
-					$gamefile = '{"true":"false"}';
-		 			$game_type = 'type';
+					loadFail();
 				}
 			}
 			else
 			{
-				$gamefile = '{"true":"false"}';
-		 		$game_type = 'type';
+				loadFail();
 			}
 	
 		}
 		else
 		{
-		 	$gamefile = '{"true":"false"}';
-		 	$game_type = 'type';
+		 	loadFail();
 		}
+
+	function loadFail() {
+		$gamefile = '{"true":"false"}';
+		$game_type = 'type';
+	}
+
 ?>
