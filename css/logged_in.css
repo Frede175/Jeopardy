@@ -21,7 +21,8 @@ html, body{
 	width: 960px;
 	background-color: white;
 	margin: 80px auto;
-	height: 75%;
+	height: auto;
+	min-height: 60%;
 	border-radius: 20px;
 	padding: 20px;
 
@@ -38,6 +39,10 @@ html, body{
 
 #menubar ul {
 	list-style-type: none;
+}
+
+#menubar li:hover {
+	background-color: #D1D1D1;
 }
 
 #menubar a {

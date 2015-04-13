@@ -71,9 +71,9 @@
 		 	loadFail();
 		}
 
-	function loadFail() {
-		$gamefile = '{"true":"false"}';
-		$game_type = 'type';
-	}
+		function loadFail() {
+			$gamefile = '{"true":"false"}';
+			$game_type = 'type';
+		}
 
 ?>
