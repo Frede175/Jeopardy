@@ -1,7 +1,6 @@
 html, body{
 	padding: 0;
     margin: 0;
-    height: 100%;
     overflow-y: hidden;
     overflow-x: hidden;
 }
@@ -20,25 +19,36 @@ html, body{
 #content_loggedin {
 	width: 960px;
 	background-color: white;
-	margin: 80px auto;
-	height: auto;
-	min-height: 60%;
-	border-radius: 20px;
+	margin: 64px auto;
+	border: 1px solid gray;
+	min-height: 600px;
+	max-height: 1200px;
 	padding: 20px;
+	overflow: auto;
+	position: relative;
 
 }
 
 #menubar {
-	width: 200px;
+	width: 220px;
+	margin: 0;
+	padding: 20px 0 0 20px;
+	margin-bottom: 0;
 	margin-left: 0px;
 	float: left;
 	background-color: inherit;
-	border: 1px solid #000000;
+	border-right: 1px solid black;
 	height: 100%;
+	position: absolute;
+	overflow: hidden;
+	left: 0;
+	top: 0;
 }
 
 #menubar ul {
 	list-style-type: none;
+	padding: 0 5px;
+	height: 100%;
 }
 
 #menubar li:hover {
@@ -48,12 +58,14 @@ html, body{
 #menubar a {
 	text-decoration: none;
 	font-size: 20px;
+	color: black;
+	padding: 2px 0 2px 5px;
 }
 
 #menu-content {
 	float: right;
+	padding: 0 0 20px 0;
 	width: 700px;
-	height: 100%;
 	display: inline;
 	background-color: inherit;
 }
