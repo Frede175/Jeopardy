@@ -33,7 +33,7 @@
 						'<th>Width</th>' .
 						'<th>Height</th>' .
 						'<th>Date</th>' .
-						'<th>Play</th>' .
+						'<th>Action</th>' .
 					'</tr>' .
 				'</thead>';
 
@@ -44,7 +44,7 @@
 				echo '<td>' . $x['width'] . '</td>';
 				echo '<td>' . $x['height'] . '</td>';
 				echo '<td>' . $x['date'] . '</td>';
-				echo '<td><a href="includes/process_play.php?name=' . htmlentities($x['name']) . '&type=save">Play</a></td>';
+				echo '<td><a href="includes/process_play.php?name=' . htmlentities($x['name']) . '&type=save"><img src="images/play-button.png" class="play-button"/></a><a href="includes/delete-save.php?name=' . htmlentities($x['name']) . '&type=save"><img src="images/delete-button.png" class="delete-button"/></a></td>';
 				echo "</tr>";
 				echo '</tbody>';
 			}
@@ -90,7 +90,7 @@
 						'<th>Width</th>' .
 						'<th>Height</th>' .
 						'<th>Date</th>' .
-						'<th>Play</th>' .
+						'<th>Action</th>' .
 					'</tr>' .
 				'</thead>';
 
@@ -101,7 +101,7 @@
 				echo '<td>' . $x['width'] . '</td>';
 				echo '<td>' . $x['height'] . '</td>';
 				echo '<td>' . $x['date'] . '</td>';
-				echo '<td><a href="includes/process_play.php?name=' . htmlentities($x['name']) . '&type=template">Play</a></td>';
+				echo '<td><a href="includes/process_play.php?name=' . htmlentities($x['name']) . '&type=template"><img src="images/play-button.png" class="play-button"/></a><a href="includes/delete-save.php?name=' . htmlentities($x['name']) . '&type=template"><img src="images/delete-button.png" class="delete-button"/></a></td>';
 				echo "</tr>";
 				echo '</tbody>';
 			}
