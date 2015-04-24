@@ -9,31 +9,35 @@
 
 		print_r(error_get_last());
 
-	if($type != "save" || $type != "template") {
-		print_r(error_get_last());
-	}
-	else
-	{
+	if($type == "save" || $type == "template") {
 		if (login_check($mysqli) == true) {
-			$deleteprep = "DELETE FROM " . $type . " WHERE name=" . $name . " AND id=" . $_SESSION['id'];
-			echo $deleteprep;
+			$id = $_SESSION['user_id'];
+			$deleteprep = "DELETE FROM $type WHERE name='$name' AND user_id='$id'";
 
 					print_r(error_get_last());
 
 
-			if($mysqli->qurry($deleteprep) === TURE) {
-				header('Location: ../manage-files');
+			if($mysqli->query($deleteprep) === TURE) {
+				header('Location: ../manage-files?error=none');
 			}
 			else
 			{
+						header('Location: ../manage-files?error=did not delete anything' . error_get_last());
 						print_r(error_get_last());
 			}
 
 		}
 		else
 		{
+			header('Location: ../manage-files?error=not loggedin');
 					print_r(error_get_last());
 		}
+	}
+	else
+	{
+		header('Location: ../manage-files?error=not');
+		print_r(error_get_last());
+		
 	}
 
 	
